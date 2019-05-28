@@ -52,9 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Gestores\GestorProducto.cs" />
     <Compile Include="Dominio\Gestores\GestorUsuario.cs" />
+    <Compile Include="Dominio\Producto.cs" />
+    <Compile Include="Dominio\ProductoDto.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Persistencia\ConnectOracle.cs" />
+    <Compile Include="Presentacion\Inicio\CerrarSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\CerrarSesion.Designer.cs">
+      <DependentUpon>CerrarSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Inicio\InicioApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,13 +76,52 @@
     <Compile Include="Presentacion\Inicio\InicionSesion.Designer.cs">
       <DependentUpon>InicionSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Principal1\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal1\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\ModificarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\ModificarProducto.Designer.cs">
+      <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\NuevoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\NuevoProducto.Designer.cs">
+      <DependentUpon>NuevoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Productos1\Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\Inicio\CerrarSesion.resx">
+      <DependentUpon>CerrarSesion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Inicio\InicioApp.resx">
       <DependentUpon>InicioApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Inicio\InicionSesion.resx">
       <DependentUpon>InicionSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal1\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Productos1\ModificarProducto.resx">
+      <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Productos1\NuevoProducto.resx">
+      <DependentUpon>NuevoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Productos1\Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,6 +147,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes de botones\anadir2.jpg" />
+    <Content Include="Imagenes de botones\buscar2.jpg" />
+    <Content Include="Imagenes de botones\eliminar2.jpg" />
+    <Content Include="Imagenes de botones\modificar2.jpg" />
     <Content Include="SQL\sql tablas.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

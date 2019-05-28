@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bienvenida.Dominio
 {
-    class Usuario
+    public class Usuario
     {
         private String dni;
         private String contra;

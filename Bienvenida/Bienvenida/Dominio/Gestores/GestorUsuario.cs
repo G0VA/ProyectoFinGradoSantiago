@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bienvenida.Dominio.Gestores
 {
-    class GestorUsuario
+    public class GestorUsuario
     {
         public GestorUsuario()
         {
@@ -44,6 +44,28 @@ namespace Bienvenida.Dominio.Gestores
             Object resul = Search.DLookUp("count(*)", "empleados", cond);
             return Int32.Parse(resul.ToString());
         }
+        public void setData(String sentencia)
+        {
+            ConnectOracle update = new ConnectOracle();
+            update.setData(sentencia);
+        }
 
+        public String getUnString(String sql)
+        {
+            ConnectOracle select = new ConnectOracle();
+            return select.getData(sql);
+        }
+
+        public static bool existEmpleConect(String id)
+        {
+            bool exist = false;
+            ConnectOracle search = new ConnectOracle();
+            int resp = Convert.ToInt16(search.DLookUp("count(*)", "orders", "IDORDER= '" + id + "' AND DELETED=0"));
+            if (resp > 0)
+            {
+                exist = true;
+            }
+            return exist;
+        }
     }
 }

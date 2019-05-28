@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnInicioSesion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,7 @@
             // 
             this.btnInicioSesion.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnInicioSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInicioSesion.Location = new System.Drawing.Point(199, 248);
+            this.btnInicioSesion.Location = new System.Drawing.Point(189, 151);
             this.btnInicioSesion.Name = "btnInicioSesion";
             this.btnInicioSesion.Size = new System.Drawing.Size(297, 64);
             this.btnInicioSesion.TabIndex = 1;
@@ -68,18 +70,46 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // Form1
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.Location = new System.Drawing.Point(189, 252);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(297, 64);
+            this.btnCerrarSesion.TabIndex = 3;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(575, 93);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 109);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "→";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // InicioApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(704, 523);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnInicioSesion);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Name = "InicioApp";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.refrescar);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -90,6 +120,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInicioSesion;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button button1;
     }
 }
 
