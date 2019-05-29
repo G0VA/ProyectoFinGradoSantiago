@@ -33,8 +33,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
             this.cbTipo2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.btnModificar.Size = new System.Drawing.Size(140, 136);
             this.btnModificar.TabIndex = 14;
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // txtNombre
             // 
@@ -83,19 +84,19 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Nombre";
             // 
-            // textBox2
+            // txtPrecio
             // 
-            this.textBox2.Location = new System.Drawing.Point(180, 442);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 20);
-            this.textBox2.TabIndex = 28;
+            this.txtPrecio.Location = new System.Drawing.Point(180, 442);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(158, 20);
+            this.txtPrecio.TabIndex = 28;
             // 
-            // textBox1
+            // txtStock
             // 
-            this.textBox1.Location = new System.Drawing.Point(180, 364);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 27;
+            this.txtStock.Location = new System.Drawing.Point(180, 364);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(158, 20);
+            this.txtStock.TabIndex = 27;
             // 
             // cbTipo2
             // 
@@ -165,8 +166,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(890, 587);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtStock);
             this.Controls.Add(this.cbTipo2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -190,8 +191,8 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.ComboBox cbTipo2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

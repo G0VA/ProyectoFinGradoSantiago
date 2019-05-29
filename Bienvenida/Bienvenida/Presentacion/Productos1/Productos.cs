@@ -24,6 +24,7 @@ namespace Bienvenida.Presentacion.Productos
             this.prin = prin;
             initTipo1("");
             initTable("");
+            dgvProductos.ClearSelection();
         }
 
         public void initTable(String cond)
@@ -92,9 +93,25 @@ namespace Bienvenida.Presentacion.Productos
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            ModificarProducto modificar = new ModificarProducto(this);
-            this.Hide();
-            modificar.ShowDialog();
+            try
+            {
+                ProductoDto p = new ProductoDto();
+                p.setId(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString());
+                p.setNombre(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[1].Value.ToString());
+                p.setT1(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[2].Value.ToString());
+                p.setT2(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[3].Value.ToString());
+                p.setStock(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[4].Value.ToString());
+                p.setPrecio(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[5].Value.ToString());
+
+                ModificarProducto modificar = new ModificarProducto(this,p);
+                this.Hide();
+                modificar.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Error, Selecciona el producto a modificar");
+            }
+                
         }
 
         private void cambioValor(object sender, EventArgs e)

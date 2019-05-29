@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bienvenida.Dominio
 {
-    class ProductoDto
+    public class ProductoDto
     {
+        private String id;
         private String nombre;
         private String t1;
         private String t2;
@@ -19,15 +20,25 @@ namespace Bienvenida.Dominio
 
         }
 
-        public ProductoDto(String nombre, String t1, String t2, String stock, String precio)
+        public ProductoDto(String id, String nombre, String t1, String t2, String stock, String precio)
         {
+            this.id = id;
             this.nombre = nombre;
             this.t1 = t1;
             this.t2 = t2;
             this.stock = stock;
             this.precio = precio;
         }
-        
+
+        public void setId(String id)
+        {
+            this.id = id;
+        }
+
+        public String getId()
+        {
+            return this.id;
+        }
         public void setNombre(String nombre)
         {
             this.nombre = nombre;
@@ -65,14 +76,14 @@ namespace Bienvenida.Dominio
         {
             return this.stock;
         }
-        public void setNombre(String nombre)
+        public void setPrecio(String precio)
         {
-            this.nombre = nombre;
+            this.precio = precio;
         }
 
-        public String getNombre()
+        public String getPrecio()
         {
-            return this.nombre;
+            return this.precio;
         }
 
     }
