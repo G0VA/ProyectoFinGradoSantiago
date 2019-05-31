@@ -16,7 +16,7 @@ namespace Bienvenida.Presentacion.Productos
     {
 
         private Principal.Principal prin;
-
+        Pedidos.NuevoPedido observer;
 
         public Productos(Principal.Principal prin)
         {
@@ -25,6 +25,21 @@ namespace Bienvenida.Presentacion.Productos
             initTipo1("");
             initTable("");
             dgvProductos.ClearSelection();
+            btnVolver.Visible = false;
+        }
+
+        public Productos(Pedidos.NuevoPedido nuevo)
+        {
+            this.observer = nuevo;
+            InitializeComponent();
+            initTipo1("");
+            initTable("");
+            dgvProductos.ClearSelection();
+
+            btnAñadir.Visible = false;
+            btnEliminar.Visible = false;
+            btnModificar.Visible = false;
+            btnCerrar.Visible = false;
         }
 
         public void initTable(String cond)
@@ -186,6 +201,32 @@ namespace Bienvenida.Presentacion.Productos
 
 
             }
+        }
+
+        
+
+        private void Coger(object sender, DataGridViewCellEventArgs e)
+        {
+            String id = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString();
+            String nombre = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[1].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[1].Value.ToString();
+            String t1 = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[2].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[2].Value.ToString();
+            String t2 = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[3].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[3].Value.ToString();
+            String stock = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[4].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[4].Value.ToString();
+            String precio = (dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[5].Value.ToString() == null) ? "" : dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[5].Value.ToString();
+
+            ProductoDto producto = new ProductoDto(id, nombre, t1, t2, stock, precio);
+            if (observer != null)
+            {
+                observer.updateProducto(producto);
+                Dispose();
+                observer.Show();
+            }            
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Dispose();
+            observer.Show();
         }
     }
 }

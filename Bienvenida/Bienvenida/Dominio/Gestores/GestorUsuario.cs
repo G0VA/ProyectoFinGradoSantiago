@@ -72,6 +72,15 @@ namespace Bienvenida.Dominio.Gestores
             return select.getData(sql);
         }
 
+        public void readInDB(String column, String table, String cond)
+        {
+            DataSet data = new DataSet();
+            ConnectOracle search = new ConnectOracle();
+
+            data = search.getData("Select " + column + " from " + table + " " + cond, "exam");
+            tabla = data.Tables["exam"];
+        }
+
         public static bool existEmpleConect(String id)
         {
             bool exist = false;

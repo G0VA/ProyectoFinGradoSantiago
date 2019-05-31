@@ -35,6 +35,8 @@
             this.btnTicket = new System.Windows.Forms.Button();
             this.btnPagar = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFecha
@@ -73,6 +75,7 @@
             this.btnNewPedido.TabIndex = 11;
             this.btnNewPedido.Text = "Nuevo Pedido";
             this.btnNewPedido.UseVisualStyleBackColor = false;
+            this.btnNewPedido.Click += new System.EventHandler(this.btnNewPedido_Click);
             // 
             // btnModPedido
             // 
@@ -127,12 +130,30 @@
             this.btnProductos.UseVisualStyleBackColor = false;
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.AllowUserToAddRows = false;
+            this.dgvPedidos.AllowUserToDeleteRows = false;
+            this.dgvPedidos.AllowUserToResizeColumns = false;
+            this.dgvPedidos.AllowUserToResizeRows = false;
+            this.dgvPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Location = new System.Drawing.Point(185, 164);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.ReadOnly = true;
+            this.dgvPedidos.RowHeadersVisible = false;
+            this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedidos.Size = new System.Drawing.Size(701, 391);
+            this.dgvPedidos.TabIndex = 16;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1206, 623);
+            this.Controls.Add(this.dgvPedidos);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.btnTicket);
@@ -143,6 +164,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Principal";
             this.Text = "Principal";
+            this.Shown += new System.EventHandler(this.mostrar);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,5 +180,6 @@
         private System.Windows.Forms.Button btnTicket;
         private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Button btnProductos;
+        private System.Windows.Forms.DataGridView dgvPedidos;
     }
 }

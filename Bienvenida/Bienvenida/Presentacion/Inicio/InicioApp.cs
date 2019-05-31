@@ -23,6 +23,21 @@ namespace Bienvenida
         {
             InitializeComponent();
             this.button1.Visible = false;
+            cerrarAll();
+        }
+
+        private void cerrarAll()
+        {
+            Usuario u = new Usuario();
+            String countText = u.gestor().getUnString("select count(*) from empleados");
+            int cont = Int16.Parse(countText);
+            int id = 1;
+            while (cont > 0)
+            {
+                u.gestor().setData("update empleados set CONECTADO = 0 where id_emple = " + id);
+                cont--;
+                id++;
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -36,7 +51,6 @@ namespace Bienvenida
                     while (listaUsuarios.Count()>0)
                     {
                         u.gestor().setData("update empleados set CONECTADO = 0 where upper(DNI) = '" + listaUsuarios[0].getDni().ToUpper() + "'");
-                        //QuitaUser(listaUsuarios[i]);
                         listaUsuarios.RemoveAt(0);
                     }
                     this.Dispose();

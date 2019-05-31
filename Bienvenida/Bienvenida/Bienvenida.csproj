@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Gestores\GestorPedido.cs" />
     <Compile Include="Dominio\Gestores\GestorProducto.cs" />
     <Compile Include="Dominio\Gestores\GestorUsuario.cs" />
+    <Compile Include="Dominio\Pedido.cs" />
     <Compile Include="Dominio\Producto.cs" />
     <Compile Include="Dominio\ProductoDto.cs" />
     <Compile Include="Dominio\Usuario.cs" />
@@ -88,6 +90,12 @@
     </Compile>
     <Compile Include="Presentacion\Inicio\InicionSesion.Designer.cs">
       <DependentUpon>InicionSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Pedidos\NuevoPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Pedidos\NuevoPedido.Designer.cs">
+      <DependentUpon>NuevoPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Principal1\Principal.cs">
       <SubType>Form</SubType>
@@ -129,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Inicio\InicionSesion.resx">
       <DependentUpon>InicionSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Pedidos\NuevoPedido.resx">
+      <DependentUpon>NuevoPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal1\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
