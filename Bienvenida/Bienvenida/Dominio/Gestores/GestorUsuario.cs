@@ -1,6 +1,7 @@
 ﻿using Bienvenida.Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,24 @@ namespace Bienvenida.Dominio.Gestores
 {
     public class GestorUsuario
     {
+        private DataTable tabla;
         public GestorUsuario()
         {
+            tabla = new DataTable();
+        }
 
+        public DataTable getTabla()
+        {
+            return this.tabla;
+        }
+
+        public void leerUsers(String cond)
+        {
+            DataSet data = new DataSet();
+            ConnectOracle search = new ConnectOracle();
+
+            data = search.getData("select dni, nombre from empleados where borrado = 0 " + cond + " order by id_emple", "exam");
+            tabla = data.Tables["exam"];
         }
 
         public bool existsUser(String dni)

@@ -38,12 +38,12 @@ namespace Bienvenida.Presentacion.Productos
             DataTable tcustomers = p.getGestor().getTabla();
             dgvProductos.Columns.Clear();
 
-                dgvProductos.Columns.Add("ID_PRODUCTO", "ID");
-                dgvProductos.Columns.Add("NOMBRE_PRODUCTO", "NOMBRE_PRODUCTO");
-                dgvProductos.Columns.Add("TIPO1", "TIPO1");
-                dgvProductos.Columns.Add("TIPO2", "TIPO2");
-                dgvProductos.Columns.Add("STOCK", "STOCK");
-                dgvProductos.Columns.Add("PRECIO", "PRECIO");
+            dgvProductos.Columns.Add("ID_PRODUCTO", "ID");
+            dgvProductos.Columns.Add("NOMBRE_PRODUCTO", "NOMBRE_PRODUCTO");
+            dgvProductos.Columns.Add("TIPO1", "TIPO1");
+            dgvProductos.Columns.Add("TIPO2", "TIPO2");
+            dgvProductos.Columns.Add("STOCK", "STOCK");
+            dgvProductos.Columns.Add("PRECIO", "PRECIO");
 
             foreach (DataRow row in tcustomers.Rows)
             {
@@ -93,7 +93,8 @@ namespace Bienvenida.Presentacion.Productos
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            try
+            bool n = dgvProductos.CurrentRow.Selected;
+            if (n)
             {
                 ProductoDto p = new ProductoDto();
                 p.setId(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString());
@@ -103,15 +104,16 @@ namespace Bienvenida.Presentacion.Productos
                 p.setStock(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[4].Value.ToString());
                 p.setPrecio(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[5].Value.ToString());
 
-                ModificarProducto modificar = new ModificarProducto(this,p);
+                ModificarProducto modificar = new ModificarProducto(this, p);
+                dgvProductos.ClearSelection();
                 this.Hide();
                 modificar.ShowDialog();
             }
-            catch
+            else
             {
                 MessageBox.Show("Error, Selecciona el producto a modificar");
             }
-                
+
         }
 
         private void cambioValor(object sender, EventArgs e)
@@ -125,7 +127,7 @@ namespace Bienvenida.Presentacion.Productos
         {
             String sql = "";
 
-            if(!String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")))
+            if (!String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")))
             {
                 sql += " And Upper(p.NOMBRE_PRODUCTO) like '%" + txtNombre.Text.ToUpper().Replace("'", "") + "%' ";
             }
@@ -146,7 +148,7 @@ namespace Bienvenida.Presentacion.Productos
         private void mostrar(object sender, EventArgs e)
         {
             dgvProductos.ClearSelection();
-            
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -158,6 +160,32 @@ namespace Bienvenida.Presentacion.Productos
             cbTipo2.SelectedIndex = -1;
             initTable("");
             initTipo1("");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            bool n = dgvProductos.CurrentRow.Selected;
+            if (n)
+            {
+                Producto p = new Producto();
+                String id = dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString();
+                String sql = "Update productos set borrado=1 where id_producto=" + id;
+
+                if (MessageBox.Show("¿Quieres eliminar a este producto?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    p.getGestor().setData(sql);
+                    MessageBox.Show("Producto eliminado con exito");
+                    initTable("");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error, selecciona un producto");
+                dgvProductos.ClearSelection();
+
+
+            }
         }
     }
 }

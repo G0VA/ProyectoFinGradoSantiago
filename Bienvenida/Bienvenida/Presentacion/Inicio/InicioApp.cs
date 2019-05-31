@@ -1,5 +1,6 @@
 ﻿
 using Bienvenida.Dominio;
+using Bienvenida.Presentacion.Empleados;
 using Bienvenida.Presentacion.Inicio;
 using Bienvenida.Presentacion.Principal;
 using System;
@@ -109,6 +110,21 @@ namespace Bienvenida
             if (this.listaUsuarios.Count() > 0)
             {
                 
+            }
+        }
+
+        private void btnEmple_Click(object sender, EventArgs e)
+        {
+            string passAdmin = Microsoft.VisualBasic.Interaction.InputBox("Introducir contraseña Admin");
+
+            if (passAdmin.Equals("SYS"))
+            {
+                Emples emples = new Emples(this);
+                this.Hide();
+                emples.ShowDialog();
+            }else
+            {
+                MessageBox.Show("Error, Contraseña incorrecta");
             }
         }
     }

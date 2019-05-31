@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioApp));
             this.label1 = new System.Windows.Forms.Label();
             this.btnInicioSesion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnEmple = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -94,12 +96,24 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnEmple
+            // 
+            this.btnEmple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmple.Image = ((System.Drawing.Image)(resources.GetObject("btnEmple.Image")));
+            this.btnEmple.Location = new System.Drawing.Point(28, 93);
+            this.btnEmple.Name = "btnEmple";
+            this.btnEmple.Size = new System.Drawing.Size(100, 104);
+            this.btnEmple.TabIndex = 10;
+            this.btnEmple.UseVisualStyleBackColor = true;
+            this.btnEmple.Click += new System.EventHandler(this.btnEmple_Click);
+            // 
             // InicioApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(704, 523);
+            this.Controls.Add(this.btnEmple);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnSalir);
@@ -122,6 +136,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEmple;
     }
 }
 

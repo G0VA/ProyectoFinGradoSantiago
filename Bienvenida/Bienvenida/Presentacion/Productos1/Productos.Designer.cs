@@ -161,6 +161,7 @@
             this.btnEliminar.Size = new System.Drawing.Size(142, 136);
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCerrar
             // 
