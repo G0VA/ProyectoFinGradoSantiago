@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.lblFecha = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnNewPedido = new System.Windows.Forms.Button();
@@ -36,6 +37,13 @@
             this.btnPagar = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbEmple = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnLogPedidos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,6 +97,7 @@
             this.btnModPedido.TabIndex = 12;
             this.btnModPedido.Text = "Modificar Pedido";
             this.btnModPedido.UseVisualStyleBackColor = false;
+            this.btnModPedido.Click += new System.EventHandler(this.btnModPedido_Click);
             // 
             // btnTicket
             // 
@@ -102,6 +111,7 @@
             this.btnTicket.TabIndex = 13;
             this.btnTicket.Text = "Imprimir Ticket";
             this.btnTicket.UseVisualStyleBackColor = false;
+            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
             // btnPagar
             // 
@@ -115,6 +125,7 @@
             this.btnPagar.TabIndex = 14;
             this.btnPagar.Text = "Pagar";
             this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // btnProductos
             // 
@@ -147,12 +158,92 @@
             this.dgvPedidos.Size = new System.Drawing.Size(701, 391);
             this.dgvPedidos.TabIndex = 16;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(224, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 26);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Empleado";
+            // 
+            // cbEmple
+            // 
+            this.cbEmple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEmple.FormattingEnabled = true;
+            this.cbEmple.Location = new System.Drawing.Point(229, 82);
+            this.cbEmple.Name = "cbEmple";
+            this.cbEmple.Size = new System.Drawing.Size(121, 21);
+            this.cbEmple.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(438, 50);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 26);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Cliente";
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(412, 82);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(158, 20);
+            this.txtCliente.TabIndex = 19;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnLimpiar.Location = new System.Drawing.Point(751, 70);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(135, 51);
+            this.btnLimpiar.TabIndex = 22;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
+            this.btnFiltrar.Location = new System.Drawing.Point(609, 50);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(102, 83);
+            this.btnFiltrar.TabIndex = 21;
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // btnLogPedidos
+            // 
+            this.btnLogPedidos.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnLogPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogPedidos.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnLogPedidos.Location = new System.Drawing.Point(943, 228);
+            this.btnLogPedidos.Name = "btnLogPedidos";
+            this.btnLogPedidos.Size = new System.Drawing.Size(201, 64);
+            this.btnLogPedidos.TabIndex = 23;
+            this.btnLogPedidos.Text = "Log Pedidos";
+            this.btnLogPedidos.UseVisualStyleBackColor = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1206, 623);
+            this.Controls.Add(this.btnLogPedidos);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnFiltrar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbEmple);
             this.Controls.Add(this.dgvPedidos);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnPagar);
@@ -181,5 +272,12 @@
         private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.DataGridView dgvPedidos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbEmple;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Button btnLogPedidos;
     }
 }

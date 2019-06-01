@@ -26,6 +26,7 @@ namespace Bienvenida.Presentacion.Principal
             this.hoy = DateTime.Today;
             lblFecha.Text = hoy.ToString("d");
             initTable("");
+            iniCombox();
         }
 
         public void initTable(String cond)
@@ -55,7 +56,35 @@ namespace Bienvenida.Presentacion.Principal
             this.dgvPedidos.Columns["FACTURADO"].Visible = false;
 
             dgvPedidos.ClearSelection();
+            dgvPedidosColor();
 
+        }
+
+        private void dgvPedidosColor()
+        {
+            foreach (DataGridViewRow rowp in dgvPedidos.Rows)
+            {   //Here 2 cell is target value and 1 cell is Volume 
+                if (Convert.ToInt32(rowp.Cells[7].Value) == 0)// Or your condition 
+                {
+                    rowp.DefaultCellStyle.BackColor = Color.White;
+                }
+                else
+                {
+                    rowp.DefaultCellStyle.BackColor = Color.Orange;
+                }
+            }
+        }
+
+        private void iniCombox()
+        {
+            Usuario user = new Usuario();
+            user.gestor().readInDB("NOMBRE", "empleados", "where borrado = 0 and conectado = 1");
+            DataTable tipo1 = user.gestor().getTabla();
+            cbEmple.Items.Clear();
+            foreach (DataRow row in tipo1.Rows)
+            {
+                cbEmple.Items.Add(row["NOMBRE"]);
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -74,6 +103,7 @@ namespace Bienvenida.Presentacion.Principal
         private void mostrar(object sender, EventArgs e)
         {
             dgvPedidos.ClearSelection();
+            iniCombox();
         }
 
         private void btnNewPedido_Click(object sender, EventArgs e)
@@ -81,6 +111,93 @@ namespace Bienvenida.Presentacion.Principal
             NuevoPedido nuevo = new NuevoPedido(this);
             this.Hide();
             nuevo.ShowDialog();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCliente.Text = "";
+            cbEmple.SelectedIndex = -1;
+            initTable("");
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            String sql = "";
+
+            if (!String.IsNullOrEmpty(txtCliente.Text.Replace("'", "")))
+            {
+                sql += " And upper(ref_cliente) like '%" + txtCliente.Text.ToUpper().Replace("'", "") + "%' ";
+            }
+
+            if (cbEmple.SelectedIndex != -1)
+            {
+                sql += " And nombre like '%" + cbEmple.SelectedItem.ToString().Replace("'", "") + "%' ";
+            }
+
+            initTable(sql);
+        }
+
+        private void btnModPedido_Click(object sender, EventArgs e)
+        {
+            bool n = dgvPedidos.CurrentRow.Selected;
+            if (n)
+            {
+                int id = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
+
+                PedidoDto pedidoDto = new PedidoDto(
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[1].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[2].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[3].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[4].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[5].Value.ToString(),
+                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[6].Value.ToString()
+                    );
+                ModificaPedido mod = new ModificaPedido(this,pedidoDto);
+                this.Hide();
+                mod.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Error, Selecciona el pedido a modificar");
+            }
+            
+        }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            bool n = dgvPedidos.CurrentRow.Selected;
+            if (n)
+            {
+                int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
+                Pedido p = new Pedido();
+                int idEmple = int.Parse(p.getGestor().getUnString("select ref_emple from pedidos where id_pedido = "+idPedido));
+
+                Pedidos.Ticket.PintaRecibo pinta = new Pedidos.Ticket.PintaRecibo(idEmple,idPedido);
+                pinta.Show();
+                p.getGestor().setData("update pedidos set facturado = 1 where id_pedido = "+idPedido);
+                initTable("");
+            }
+            else
+            {
+                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket");
+            }
+        }
+
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            bool n = dgvPedidos.CurrentRow.Selected;
+            if (n)
+            {
+                int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
+                Pedido p = new Pedido();
+                p.getGestor().setData("update pedidos set pagado = 1 where id_pedido = " + idPedido);
+                initTable("");
+            }
+            else
+            {
+                MessageBox.Show("Error, Selecciona el pedido a pagar");
+            }
         }
     }
 }

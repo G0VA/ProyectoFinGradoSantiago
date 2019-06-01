@@ -60,7 +60,6 @@ namespace Bienvenida.Presentacion.Pedidos
                 sql = "SELECT MAX(id_pedido_produc) FROM pedidos_productos";
                 String idorderp = o.getGestor().getUnString(sql);
                 int idorderpNum = 1;
-                MessageBox.Show("TARZA//////" + idorderp);
                 if (!idorderp.Equals(""))
                 {
                     idorderpNum = Int32.Parse(idorderp);
@@ -72,11 +71,15 @@ namespace Bienvenida.Presentacion.Pedidos
                     String idp = o.getGestor().getUnString(sql);
                     sql = "Insert into pedidos_productos values ('" + idorderpNum + "', '" + idPedido + "', '" + idp + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()) + "')";
                     o.getGestor().setData(sql);
+                    idorderpNum++;
                 }
                 this.Dispose();
                 prin.initTable("");
                 prin.Show();
 
+            }else
+            {
+                MessageBox.Show("Error, revise los datos para crear pedido");
             }
         }
 

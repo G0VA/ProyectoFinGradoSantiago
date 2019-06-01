@@ -17,6 +17,7 @@ namespace Bienvenida.Presentacion.Productos
 
         private Principal.Principal prin;
         Pedidos.NuevoPedido observer;
+        Pedidos.ModificaPedido modObserver;
 
         public Productos(Principal.Principal prin)
         {
@@ -31,6 +32,20 @@ namespace Bienvenida.Presentacion.Productos
         public Productos(Pedidos.NuevoPedido nuevo)
         {
             this.observer = nuevo;
+            InitializeComponent();
+            initTipo1("");
+            initTable("");
+            dgvProductos.ClearSelection();
+
+            btnAñadir.Visible = false;
+            btnEliminar.Visible = false;
+            btnModificar.Visible = false;
+            btnCerrar.Visible = false;
+        }
+
+        public Productos(Pedidos.ModificaPedido nuevo)
+        {
+            this.modObserver = nuevo;
             InitializeComponent();
             initTipo1("");
             initTable("");
@@ -133,9 +148,12 @@ namespace Bienvenida.Presentacion.Productos
 
         private void cambioValor(object sender, EventArgs e)
         {
-            cbTipo2.Items.Clear();
-            String cond = " Where t1 = (Select id from PRODUCTOS_TIPO1 where TIPO = '" + cbTipo1.SelectedItem.ToString() + "')";
-            initTipo2(cond);
+            if (cbTipo1.SelectedIndex != -1)
+            {
+                cbTipo2.Items.Clear();
+                String cond = " Where t1 = (Select id from PRODUCTOS_TIPO1 where TIPO = '" + cbTipo1.SelectedItem.ToString() + "')";
+                initTipo2(cond);
+            }  
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
@@ -169,12 +187,10 @@ namespace Bienvenida.Presentacion.Productos
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
-            cbTipo1.Items.Clear();
             cbTipo1.SelectedIndex = -1;
             cbTipo2.Items.Clear();
-            cbTipo2.SelectedIndex = -1;
             initTable("");
-            initTipo1("");
+            //initTipo1("");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -220,13 +236,28 @@ namespace Bienvenida.Presentacion.Productos
                 observer.updateProducto(producto);
                 Dispose();
                 observer.Show();
-            }            
+            }
+
+            if (modObserver != null)
+            {
+                modObserver.updateProducto(producto);
+                Dispose();
+                modObserver.Show();
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Dispose();
-            observer.Show();
+
+            if (observer != null)
+            {
+                observer.Show();
+            }
+            if (modObserver != null)
+            {
+                modObserver.Show();
+            }
         }
     }
 }

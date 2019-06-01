@@ -31,6 +31,15 @@ namespace Bienvenida.Dominio.Gestores
             tabla = data.Tables["exam"];
         }
 
+        public void leerLineasPedidos(String cond)
+        {
+            DataSet data = new DataSet();
+            ConnectOracle search = new ConnectOracle();
+
+            data = search.getData("select p.nombre_producto PRODUCTO, o.cantidad, p.precio from PEDIDOS_PRODUCTOS o inner join productos p on p.ID_PRODUCTO = o.REF_PRODUCTO where 1 = 1 " + cond + " order by id_pedido_produc", "exam");
+            tabla = data.Tables["exam"];
+        }
+
         public void readInDB(String column, String table, String cond)
         {
             DataSet data = new DataSet();
