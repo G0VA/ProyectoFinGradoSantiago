@@ -180,6 +180,7 @@
     <Content Include="Imagenes de botones\anadir2.jpg" />
     <Content Include="Imagenes de botones\buscar2.jpg" />
     <Content Include="Imagenes de botones\eliminar2.jpg" />
+    <Content Include="Imagenes de botones\emple2.jpg" />
     <Content Include="Imagenes de botones\modificar2.jpg" />
     <Content Include="SQL\sql tablas.sql" />
   </ItemGroup>

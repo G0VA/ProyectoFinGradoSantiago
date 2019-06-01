@@ -26,9 +26,58 @@ namespace Bienvenida.Presentacion.Pedidos
             txtTotal.Enabled = false;
         }
 
+        private bool check()
+        {
+            bool correcto = true;
+            if (cbEmples.SelectedIndex == -1)
+                correcto = false;
+
+            if (cbFPago.SelectedIndex == -1)
+                correcto = false;
+
+            return correcto;
+
+        }
+
         private void btnCreaPedido_Click(object sender, EventArgs e)
         {
-            
+            Pedido o = new Pedido();
+            float f1=-1;
+            if (!txtTotal.Text.Equals(""))
+            {
+                f1 = float.Parse(txtTotal.Text.Replace("'", "").Replace(".", ",").ToString());
+            }
+            if (check() && (f1 != -1 && f1 > 0))
+            {
+                String idPedidoText = o.getGestor().getUnString("select MAX(id_pedido) from pedidos");
+                int idPedido = Int32.Parse(idPedidoText);
+                idPedido++;
+                String id_emple = o.getGestor().getUnString("select id_emple from empleados where dni = '"+ cbEmples.SelectedItem.ToString().Replace("'", "") + "'");
+                String id_pago = o.getGestor().getUnString("select id_fpago from formas_pago where forma_pago = '" + cbFPago.SelectedItem.ToString().Replace("'", "") + "'");
+                String sql = "Insert into pedidos values (" + idPedido + ", " + id_emple + ", '" + txtCliente.Text.Replace("'", "") + "', " + id_pago + ", '" + f1 + "',0 , 0, sysdate)";
+                o.getGestor().setData(sql);
+
+                sql = "SELECT MAX(id_pedido_produc) FROM pedidos_productos";
+                String idorderp = o.getGestor().getUnString(sql);
+                int idorderpNum = 1;
+                MessageBox.Show("TARZA//////" + idorderp);
+                if (!idorderp.Equals(""))
+                {
+                    idorderpNum = Int32.Parse(idorderp);
+                    idorderpNum++;
+                } 
+                for (int i = 0; i < dgvNuevoPedido.RowCount; i++)
+                {
+                    sql = "SELECT id_producto FROM productos WHERE UPPER(nombre_producto) = '" + dgvNuevoPedido.Rows[i].Cells[0].Value.ToString().ToUpper() + "'";
+                    String idp = o.getGestor().getUnString(sql);
+                    sql = "Insert into pedidos_productos values ('" + idorderpNum + "', '" + idPedido + "', '" + idp + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()) + "')";
+                    o.getGestor().setData(sql);
+                }
+                this.Dispose();
+                prin.initTable("");
+                prin.Show();
+
+            }
         }
 
         private void iniCombox()
