@@ -88,6 +88,7 @@
             this.dgvEmples.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvEmples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmples.Location = new System.Drawing.Point(40, 131);
+            this.dgvEmples.MultiSelect = false;
             this.dgvEmples.Name = "dgvEmples";
             this.dgvEmples.ReadOnly = true;
             this.dgvEmples.RowHeadersVisible = false;

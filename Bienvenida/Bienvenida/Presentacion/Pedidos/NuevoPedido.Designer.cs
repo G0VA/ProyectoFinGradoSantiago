@@ -175,6 +175,7 @@
             this.dgvNuevoPedido.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvNuevoPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNuevoPedido.Location = new System.Drawing.Point(199, 123);
+            this.dgvNuevoPedido.MultiSelect = false;
             this.dgvNuevoPedido.Name = "dgvNuevoPedido";
             this.dgvNuevoPedido.ReadOnly = true;
             this.dgvNuevoPedido.RowHeadersVisible = false;

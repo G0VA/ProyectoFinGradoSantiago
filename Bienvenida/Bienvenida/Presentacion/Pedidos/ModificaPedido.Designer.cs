@@ -223,6 +223,7 @@
             this.dgvModPedido.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvModPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvModPedido.Location = new System.Drawing.Point(212, 117);
+            this.dgvModPedido.MultiSelect = false;
             this.dgvModPedido.Name = "dgvModPedido";
             this.dgvModPedido.ReadOnly = true;
             this.dgvModPedido.RowHeadersVisible = false;

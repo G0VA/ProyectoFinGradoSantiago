@@ -64,8 +64,8 @@ namespace Bienvenida.Presentacion.Principal
         private void dgvPedidosColor()
         {
             foreach (DataGridViewRow rowp in dgvPedidos.Rows)
-            {   //Here 2 cell is target value and 1 cell is Volume 
-                if (Convert.ToInt32(rowp.Cells[7].Value) == 0)// Or your condition 
+            {  
+                if (Convert.ToInt32(rowp.Cells[7].Value) == 0)
                 {
                     rowp.DefaultCellStyle.BackColor = Color.White;
                 }
@@ -117,7 +117,6 @@ namespace Bienvenida.Presentacion.Principal
             foreach (DataRow row in tProducts.Rows)
             {
                 MessageBox.Show("///ALERTA/// el producto "+ row["NOMBRE"].ToString()+" tiene el stock inferior a 10.");
-
                 p.getGestor().setData("update productos set avisado = 1 where id_producto = "+ row["ID"].ToString());
             }
         }
@@ -211,6 +210,7 @@ namespace Bienvenida.Presentacion.Principal
                     int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
                     Pedido p = new Pedido();
                     p.getGestor().setData("update pedidos set pagado = 1 where id_pedido = " + idPedido);
+                    MessageBox.Show("Pedido pagado");
                     initTable("");
                 }
                 else
@@ -229,6 +229,13 @@ namespace Bienvenida.Presentacion.Principal
             MostrarPedidos ped = new MostrarPedidos(this);
             this.Hide();
             ped.ShowDialog();
+        }
+
+        private void btnConta_Click(object sender, EventArgs e)
+        {
+            Principal1.Contabilidad conta = new Principal1.Contabilidad(this);
+            this.Hide();
+            conta.ShowDialog();
         }
     }
 }

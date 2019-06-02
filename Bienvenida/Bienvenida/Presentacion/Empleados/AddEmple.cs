@@ -78,6 +78,8 @@ namespace Bienvenida.Presentacion.Empleados
                 MessageBox.Show("Alta realizada correctamente");
 
                 this.emple.initTable("");
+                this.Dispose();
+                emple.Show();
             }
             else
             {

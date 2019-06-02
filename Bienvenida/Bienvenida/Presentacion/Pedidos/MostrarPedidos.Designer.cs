@@ -60,6 +60,7 @@
             this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedidos.Location = new System.Drawing.Point(76, 151);
+            this.dgvPedidos.MultiSelect = false;
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
             this.dgvPedidos.RowHeadersVisible = false;

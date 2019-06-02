@@ -44,6 +44,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.btnLogPedidos = new System.Windows.Forms.Button();
+            this.btnConta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,6 +152,7 @@
             this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedidos.Location = new System.Drawing.Point(185, 164);
+            this.dgvPedidos.MultiSelect = false;
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
             this.dgvPedidos.RowHeadersVisible = false;
@@ -232,12 +234,27 @@
             this.btnLogPedidos.UseVisualStyleBackColor = false;
             this.btnLogPedidos.Click += new System.EventHandler(this.btnLogPedidos_Click);
             // 
+            // btnConta
+            // 
+            this.btnConta.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnConta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnConta.Location = new System.Drawing.Point(12, 457);
+            this.btnConta.Name = "btnConta";
+            this.btnConta.Size = new System.Drawing.Size(131, 64);
+            this.btnConta.TabIndex = 24;
+            this.btnConta.Text = "Contabilidad";
+            this.btnConta.UseVisualStyleBackColor = false;
+            this.btnConta.Click += new System.EventHandler(this.btnConta_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1206, 623);
+            this.Controls.Add(this.btnConta);
             this.Controls.Add(this.btnLogPedidos);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnFiltrar);
@@ -280,5 +297,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.Button btnLogPedidos;
+        private System.Windows.Forms.Button btnConta;
     }
 }

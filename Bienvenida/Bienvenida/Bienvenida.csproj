@@ -143,6 +143,12 @@
     <Compile Include="Presentacion\Pedidos\Ticket\PintaRecibo.Designer.cs">
       <DependentUpon>PintaRecibo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Principal1\Contabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal1\Contabilidad.Designer.cs">
+      <DependentUpon>Contabilidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Principal1\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Pedidos\Ticket\PintaRecibo.resx">
       <DependentUpon>PintaRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal1\Contabilidad.resx">
+      <DependentUpon>Contabilidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal1\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
