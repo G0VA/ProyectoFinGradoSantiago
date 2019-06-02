@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -149,6 +150,12 @@
     <Compile Include="Presentacion\Principal1\Contabilidad.Designer.cs">
       <DependentUpon>Contabilidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Principal1\Grafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Principal1\Grafico.Designer.cs">
+      <DependentUpon>Grafico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Principal1\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal1\Contabilidad.resx">
       <DependentUpon>Contabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Principal1\Grafico.resx">
+      <DependentUpon>Grafico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal1\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

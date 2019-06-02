@@ -169,5 +169,26 @@ namespace Bienvenida.Presentacion.Principal1
                 date2.Enabled = true;
             }
         }
+
+        private void btnGrafico_Click(object sender, EventArgs e)
+        {
+            Grafico gra = new Grafico(this,1);
+            this.Hide();
+            gra.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Grafico gra = new Grafico(this,2);
+            this.Hide();
+            gra.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Grafico gra = new Grafico(this,3);
+            this.Hide();
+            gra.ShowDialog();
+        }
     }
 }
