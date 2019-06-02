@@ -104,13 +104,15 @@ namespace Bienvenida.Presentacion.Productos
                 int t1 = Int16.Parse(t1Texto);
                 int t2 = Int16.Parse(t2Texto);
 
-                String sql = "INSERT INTO PRODUCTOS (ID_PRODUCTO, NOMBRE_PRODUCTO, TIPO1, TIPO2, STOCK, PRECIO, BORRADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', " + t1 + ", " + t2 + ", " + txtStock.Text.Replace("'", "") + ", '" + precio + "', 0)";
+                String sql = "INSERT INTO PRODUCTOS (ID_PRODUCTO, NOMBRE_PRODUCTO, TIPO1, TIPO2, STOCK, PRECIO, BORRADO, AVISADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', " + t1 + ", " + t2 + ", " + txtStock.Text.Replace("'", "") + ", '" + precio + "', 0, 0)";
 
                 p.getGestor().setData(sql);
 
                 MessageBox.Show("Insertado con éxito");
 
+                this.Dispose();
                 this.pro.initTable("");
+                this.pro.Show();
             }
             else
             {

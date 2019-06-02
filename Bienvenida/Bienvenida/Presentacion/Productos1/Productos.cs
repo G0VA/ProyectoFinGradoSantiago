@@ -118,6 +118,7 @@ namespace Bienvenida.Presentacion.Productos
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            prin.mideStock();
             this.prin.Show();
         }
 

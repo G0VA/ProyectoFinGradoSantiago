@@ -230,6 +230,7 @@
             this.btnLogPedidos.TabIndex = 23;
             this.btnLogPedidos.Text = "Log Pedidos";
             this.btnLogPedidos.UseVisualStyleBackColor = false;
+            this.btnLogPedidos.Click += new System.EventHandler(this.btnLogPedidos_Click);
             // 
             // Principal
             // 

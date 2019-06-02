@@ -41,6 +41,15 @@ namespace Bienvenida.Dominio.Gestores
             tabla = data.Tables["exam"];
         }
 
+        public void leerProductosAvisar()
+        {
+            DataSet data = new DataSet();
+            ConnectOracle search = new ConnectOracle();
+
+            data = search.getData("select id_producto id, nombre_producto nombre from productos where borrado = 0 and avisado = 0 and stock < 10 order by id_producto", "exam");
+            tabla = data.Tables["exam"];
+        }
+
         public void leerTipo1()
         {
             DataSet data = new DataSet();

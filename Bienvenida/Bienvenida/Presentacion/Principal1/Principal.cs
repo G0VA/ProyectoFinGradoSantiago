@@ -27,6 +27,7 @@ namespace Bienvenida.Presentacion.Principal
             lblFecha.Text = hoy.ToString("d");
             initTable("");
             iniCombox();
+            mideStock();
         }
 
         public void initTable(String cond)
@@ -104,6 +105,21 @@ namespace Bienvenida.Presentacion.Principal
         {
             dgvPedidos.ClearSelection();
             iniCombox();
+            mideStock();
+        }
+
+        public void mideStock()
+        {
+            Producto p = new Producto();
+            p.getGestor().leerProductosAvisar();
+            DataTable tProducts = p.getGestor().getTabla();
+
+            foreach (DataRow row in tProducts.Rows)
+            {
+                MessageBox.Show("///ALERTA/// el producto "+ row["NOMBRE"].ToString()+" tiene el stock inferior a 10.");
+
+                p.getGestor().setData("update productos set avisado = 1 where id_producto = "+ row["ID"].ToString());
+            }
         }
 
         private void btnNewPedido_Click(object sender, EventArgs e)
@@ -189,15 +205,30 @@ namespace Bienvenida.Presentacion.Principal
             bool n = dgvPedidos.CurrentRow.Selected;
             if (n)
             {
-                int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
-                Pedido p = new Pedido();
-                p.getGestor().setData("update pedidos set pagado = 1 where id_pedido = " + idPedido);
-                initTable("");
+                int idfacturado = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[7].Value.ToString());
+                if(idfacturado == 1)
+                {
+                    int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
+                    Pedido p = new Pedido();
+                    p.getGestor().setData("update pedidos set pagado = 1 where id_pedido = " + idPedido);
+                    initTable("");
+                }
+                else
+                {
+                    MessageBox.Show("Error, el pedido debe estar facturado antes de pagar");
+                }
             }
             else
             {
                 MessageBox.Show("Error, Selecciona el pedido a pagar");
             }
+        }
+
+        private void btnLogPedidos_Click(object sender, EventArgs e)
+        {
+            MostrarPedidos ped = new MostrarPedidos(this);
+            this.Hide();
+            ped.ShowDialog();
         }
     }
 }

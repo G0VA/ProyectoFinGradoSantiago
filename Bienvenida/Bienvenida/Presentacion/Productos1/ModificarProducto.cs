@@ -113,25 +113,28 @@ namespace Bienvenida.Presentacion.Productos
         {
             if (check())
             {
-                Producto pro = new Producto();
+                Producto prod = new Producto();
                 //String idTexto = pro.getGestor().getUnString("select count(*) from productos");
                 //int id = Int16.Parse(idTexto);
                 //id++;
                 float precio = float.Parse(txtPrecio.Text.Replace("'", "").Replace(".", ",").ToString());
-                String t1Texto = pro.getGestor().getUnString("select id from productos_tipo1 where tipo = '" + cbTipo1.SelectedItem.ToString() + "'");
-                String t2Texto = pro.getGestor().getUnString("select id from productos_tipo2 where tipo = '" + cbTipo2.SelectedItem.ToString() + "'");
+                String t1Texto = prod.getGestor().getUnString("select id from productos_tipo1 where tipo = '" + cbTipo1.SelectedItem.ToString() + "'");
+                String t2Texto = prod.getGestor().getUnString("select id from productos_tipo2 where tipo = '" + cbTipo2.SelectedItem.ToString() + "'");
                 int t1 = Int16.Parse(t1Texto);
                 int t2 = Int16.Parse(t2Texto);
 
-                String delete = "delete from productos where id_producto = "+this.p.getId();
-                String sql = "INSERT INTO PRODUCTOS (ID_PRODUCTO, NOMBRE_PRODUCTO, TIPO1, TIPO2, STOCK, PRECIO, BORRADO) VALUES (" + this.p.getId() + ", '" + txtNombre.Text.Replace("'", "") + "', " + t1 + ", " + t2 + ", " + txtStock.Text.Replace("'", "") + ", '" + precio + "', 0)";
+                //String delete = "delete from productos where id_producto = "+this.p.getId();
+ 
+                //String sql = "INSERT INTO PRODUCTOS (ID_PRODUCTO, NOMBRE_PRODUCTO, TIPO1, TIPO2, STOCK, PRECIO, BORRADO, AVISADO) VALUES (" + this.p.getId() + ", '" + txtNombre.Text.Replace("'", "") + "', " + t1 + ", " + t2 + ", " + txtStock.Text.Replace("'", "") + ", '" + precio + "', 0, 0)";
+                String update = "update productos set TIPO1 = "+ t1+", TIPO2 = "+t2+", STOCK = " + txtStock.Text.Replace("'", "") + ", PRECIO = '"+precio+"', AVISADO = 0 where id_producto = "+ this.p.getId();
+                prod.getGestor().setData(update);
+                //pro.getGestor().setData(sql);
 
-                pro.getGestor().setData(delete);
-                pro.getGestor().setData(sql);
-
-                MessageBox.Show("Insertado con éxito");
-
+                MessageBox.Show("Modificado con éxito");
+                this.Dispose();
                 this.pro.initTable("");
+                this.pro.Show();
+                
             }
             else
             {

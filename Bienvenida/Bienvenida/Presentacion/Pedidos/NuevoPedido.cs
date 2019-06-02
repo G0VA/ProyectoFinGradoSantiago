@@ -72,12 +72,17 @@ namespace Bienvenida.Presentacion.Pedidos
                     sql = "Insert into pedidos_productos values ('" + idorderpNum + "', '" + idPedido + "', '" + idp + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) + "', '" + float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()) + "')";
                     o.getGestor().setData(sql);
                     idorderpNum++;
+                    int newStock = Int32.Parse(o.getGestor().getUnString("select stock from productos where id_producto = " + idp)) - Int32.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString());
+                    o.getGestor().setData("update productos set stock = "+newStock+" where id_producto = "+idp);
+
                 }
                 this.Dispose();
                 prin.initTable("");
                 prin.Show();
+                prin.mideStock();
 
-            }else
+            }
+            else
             {
                 MessageBox.Show("Error, revise los datos para crear pedido");
             }
@@ -122,6 +127,7 @@ namespace Bienvenida.Presentacion.Pedidos
         {
             this.Dispose();
             prin.Show();
+            prin.mideStock();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -141,15 +147,43 @@ namespace Bienvenida.Presentacion.Pedidos
             {
                 if (!String.IsNullOrEmpty(txtProduct.Text.Replace("'", "")))
                 {
-                    dgvNuevoPedido.Rows.Add(txtProduct.Text.Replace("'", ""), nudAmount.Value.ToString().Replace("'", ""), prod.getPrecio().Replace("'", ""));
+                    bool seguir = true;
 
-                    for (int i = 0; i < dgvNuevoPedido.RowCount; i++)
+                    for (int i = 0; i < dgvNuevoPedido.RowCount && seguir; i++)
                     {
-                        this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()));
-                    }
-                    txtTotal.Text = Convert.ToString(t);
-                    dgvNuevoPedido.ClearSelection();
+                        if(dgvNuevoPedido.RowCount > 0)
+                        {
+                            String nombre = dgvNuevoPedido.Rows[i].Cells[0].Value.ToString();
+                            int amount = Int32.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString());
 
+                            if (String.Equals(nombre, txtProduct.Text.Replace("'", "")))
+                            {
+                                seguir = false;
+                                int newamount = amount + Int32.Parse(nudAmount.Value.ToString());
+                                dgvNuevoPedido.Rows[i].Cells[1].Value = newamount;
+                                for (int j = 0; j < dgvNuevoPedido.RowCount; j++)
+                                {
+                                    this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[j].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[j].Cells[2].Value.ToString()));
+                                }
+                                txtTotal.Text = Convert.ToString(t);
+                                dgvNuevoPedido.ClearSelection();
+                                txtProduct.Text = "";
+                            }
+                        }                      
+                    }
+                    if (seguir)
+                    {
+                        dgvNuevoPedido.Rows.Add(txtProduct.Text.Replace("'", ""), nudAmount.Value.ToString().Replace("'", ""), prod.getPrecio().Replace("'", ""));
+
+                        for (int i = 0; i < dgvNuevoPedido.RowCount; i++)
+                        {
+                            this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()));
+                        }
+                        txtTotal.Text = Convert.ToString(t);
+                        dgvNuevoPedido.ClearSelection();
+                        txtProduct.Text = "";
+                    }
+                    
                 }
                 else
                 {

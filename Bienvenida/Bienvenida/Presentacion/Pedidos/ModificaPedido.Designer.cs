@@ -250,6 +250,7 @@
             // 
             // txtDni
             // 
+            this.txtDni.Enabled = false;
             this.txtDni.Location = new System.Drawing.Point(30, 73);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(186, 20);

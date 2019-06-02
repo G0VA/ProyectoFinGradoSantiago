@@ -31,6 +31,15 @@ namespace Bienvenida.Dominio.Gestores
             tabla = data.Tables["exam"];
         }
 
+        public void leerTodosPedidos(String cond)
+        {
+            DataSet data = new DataSet();
+            ConnectOracle search = new ConnectOracle();
+
+            data = search.getData("select o.id_pedido id, e.nombre, e.dni, o.ref_cliente cliente, f.forma_pago, o.total, o.fecha_pedido, o.facturado, o.pagado from pedidos o inner join empleados e on e.id_emple = o.REF_EMPLE inner join FORMAS_PAGO f on f.ID_FPAGO = o.REF_PAGO where 1 = 1 " + cond + " order by id_pedido", "exam");
+            tabla = data.Tables["exam"];
+        }
+
         public void leerLineasPedidos(String cond)
         {
             DataSet data = new DataSet();
