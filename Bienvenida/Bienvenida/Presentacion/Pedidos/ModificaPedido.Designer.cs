@@ -149,6 +149,7 @@
             this.cbFPago.Name = "cbFPago";
             this.cbFPago.Size = new System.Drawing.Size(137, 21);
             this.cbFPago.TabIndex = 34;
+            this.cbFPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbFPago_KeyPress);
             // 
             // txtTotal
             // 
@@ -191,6 +192,7 @@
             // 
             // txtProduct
             // 
+            this.txtProduct.Enabled = false;
             this.txtProduct.Location = new System.Drawing.Point(30, 266);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(156, 20);

@@ -32,13 +32,18 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket
             tcustomers.Columns.Add("fecha", Type.GetType("System.String"));
             tcustomers.Columns.Add("total", Type.GetType("System.String"));
             tcustomers.Columns.Add("pago", Type.GetType("System.String"));
+            tcustomers.Columns.Add("iva", Type.GetType("System.String"));
 
             data = search.getData("select o.id_pedido id, o.fecha_pedido fecha, o.total, f.forma_pago pago from pedidos o inner join FORMAS_PAGO f on f.ID_FPAGO = o.REF_PAGO where o.ID_PEDIDO = " + idPedido, "exam");
             DataTable tmp = data.Tables["exam"];
 
+            double total = double.Parse(search.getData("select total from pedidos where id_pedido = "+idPedido));
+            double iva = (total * 0.21);
+            iva = Math.Round(iva, 2);
             foreach (DataRow row in tmp.Rows)
             {
-                tcustomers.Rows.Add(new Object[] { row["id"], row["fecha"], row["total"], row["pago"] });
+                
+                tcustomers.Rows.Add(new Object[] { row["id"], row["fecha"], total.ToString(), row["pago"], iva .ToString()});
             }
 
             return tcustomers;
@@ -95,7 +100,7 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket
             DataTable tEmple = llenaEmple();
             DataTable tproduc = llenaPro();
 
-            CrystalReportRecibo reporte = new CrystalReportRecibo();
+            CrystalReportRecibo1 reporte = new CrystalReportRecibo1();
             reporte.Database.Tables["Pedido"].SetDataSource(tPedido);
             reporte.Database.Tables["Empleado"].SetDataSource(tEmple);
             reporte.Database.Tables["Producto"].SetDataSource(tproduc);

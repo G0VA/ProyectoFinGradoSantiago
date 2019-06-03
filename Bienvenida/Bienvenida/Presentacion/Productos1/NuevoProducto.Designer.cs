@@ -69,6 +69,7 @@
             this.cbTipo1.Size = new System.Drawing.Size(158, 21);
             this.cbTipo1.TabIndex = 8;
             this.cbTipo1.SelectedIndexChanged += new System.EventHandler(this.cambioValor);
+            this.cbTipo1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo1_KeyPress);
             // 
             // btnCerrar
             // 
@@ -131,6 +132,7 @@
             this.cbTipo2.Name = "cbTipo2";
             this.cbTipo2.Size = new System.Drawing.Size(158, 21);
             this.cbTipo2.TabIndex = 18;
+            this.cbTipo2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo2_KeyPress);
             // 
             // txtStock
             // 
@@ -138,6 +140,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(158, 20);
             this.txtStock.TabIndex = 19;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // txtPrecio
             // 
@@ -145,6 +148,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(158, 20);
             this.txtPrecio.TabIndex = 20;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // btnAñadir
             // 

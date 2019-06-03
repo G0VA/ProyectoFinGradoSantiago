@@ -91,6 +91,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(158, 20);
             this.txtPrecio.TabIndex = 28;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtStock
             // 
@@ -98,6 +99,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(158, 20);
             this.txtStock.TabIndex = 27;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // cbTipo2
             // 
@@ -107,6 +109,7 @@
             this.cbTipo2.Name = "cbTipo2";
             this.cbTipo2.Size = new System.Drawing.Size(158, 21);
             this.cbTipo2.TabIndex = 26;
+            this.cbTipo2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo2_KeyPress);
             // 
             // label5
             // 
@@ -160,6 +163,7 @@
             this.cbTipo1.Size = new System.Drawing.Size(158, 21);
             this.cbTipo1.TabIndex = 21;
             this.cbTipo1.SelectedIndexChanged += new System.EventHandler(this.cambioValor);
+            this.cbTipo1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo1_KeyPress);
             // 
             // ModificarProducto
             // 

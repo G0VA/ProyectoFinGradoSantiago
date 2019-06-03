@@ -41,14 +41,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.date2 = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblDias = new System.Windows.Forms.Label();
-            this.txtVentaHoy = new System.Windows.Forms.TextBox();
-            this.txtVentaMes = new System.Windows.Forms.TextBox();
-            this.txtVentaAno = new System.Windows.Forms.TextBox();
             this.txtVentaElegido = new System.Windows.Forms.TextBox();
+            this.txtVentaAno = new System.Windows.Forms.TextBox();
+            this.txtVentaMes = new System.Windows.Forms.TextBox();
+            this.txtVentaHoy = new System.Windows.Forms.TextBox();
+            this.lblDias = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblCambio = new System.Windows.Forms.Label();
             this.btnGrafico = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -88,6 +88,7 @@
             this.cbEmple.Name = "cbEmple";
             this.cbEmple.Size = new System.Drawing.Size(121, 21);
             this.cbEmple.TabIndex = 22;
+            this.cbEmple.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEmple_KeyPress);
             // 
             // ckDate
             // 
@@ -188,66 +189,16 @@
             this.panel1.Size = new System.Drawing.Size(505, 193);
             this.panel1.TabIndex = 39;
             // 
-            // label3
+            // txtVentaElegido
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(370, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Total vendido hoy_____________________";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 61);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(365, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Total vendido mes____________________";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 103);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(371, 24);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Total vendido año_____________________";
-            // 
-            // lblDias
-            // 
-            this.lblDias.AutoSize = true;
-            this.lblDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDias.Location = new System.Drawing.Point(19, 141);
-            this.lblDias.Name = "lblDias";
-            this.lblDias.Size = new System.Drawing.Size(0, 24);
-            this.lblDias.TabIndex = 3;
-            // 
-            // txtVentaHoy
-            // 
-            this.txtVentaHoy.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtVentaHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtVentaHoy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaHoy.Location = new System.Drawing.Point(395, 13);
-            this.txtVentaHoy.Name = "txtVentaHoy";
-            this.txtVentaHoy.Size = new System.Drawing.Size(100, 22);
-            this.txtVentaHoy.TabIndex = 5;
-            this.txtVentaHoy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtVentaMes
-            // 
-            this.txtVentaMes.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtVentaMes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtVentaMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaMes.Location = new System.Drawing.Point(395, 58);
-            this.txtVentaMes.Name = "txtVentaMes";
-            this.txtVentaMes.Size = new System.Drawing.Size(100, 22);
-            this.txtVentaMes.TabIndex = 6;
-            this.txtVentaMes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVentaElegido.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.txtVentaElegido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVentaElegido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaElegido.Location = new System.Drawing.Point(395, 141);
+            this.txtVentaElegido.Name = "txtVentaElegido";
+            this.txtVentaElegido.Size = new System.Drawing.Size(100, 22);
+            this.txtVentaElegido.TabIndex = 8;
+            this.txtVentaElegido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtVentaAno
             // 
@@ -260,16 +211,66 @@
             this.txtVentaAno.TabIndex = 7;
             this.txtVentaAno.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtVentaElegido
+            // txtVentaMes
             // 
-            this.txtVentaElegido.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtVentaElegido.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtVentaElegido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaElegido.Location = new System.Drawing.Point(395, 141);
-            this.txtVentaElegido.Name = "txtVentaElegido";
-            this.txtVentaElegido.Size = new System.Drawing.Size(100, 22);
-            this.txtVentaElegido.TabIndex = 8;
-            this.txtVentaElegido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVentaMes.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.txtVentaMes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVentaMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaMes.Location = new System.Drawing.Point(395, 58);
+            this.txtVentaMes.Name = "txtVentaMes";
+            this.txtVentaMes.Size = new System.Drawing.Size(100, 22);
+            this.txtVentaMes.TabIndex = 6;
+            this.txtVentaMes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtVentaHoy
+            // 
+            this.txtVentaHoy.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.txtVentaHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVentaHoy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaHoy.Location = new System.Drawing.Point(395, 13);
+            this.txtVentaHoy.Name = "txtVentaHoy";
+            this.txtVentaHoy.Size = new System.Drawing.Size(100, 22);
+            this.txtVentaHoy.TabIndex = 5;
+            this.txtVentaHoy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblDias
+            // 
+            this.lblDias.AutoSize = true;
+            this.lblDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDias.Location = new System.Drawing.Point(19, 141);
+            this.lblDias.Name = "lblDias";
+            this.lblDias.Size = new System.Drawing.Size(0, 24);
+            this.lblDias.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(19, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(371, 24);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Total vendido año_____________________";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(365, 24);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Total vendido mes____________________";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(370, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Total vendido hoy_____________________";
             // 
             // lblCambio
             // 

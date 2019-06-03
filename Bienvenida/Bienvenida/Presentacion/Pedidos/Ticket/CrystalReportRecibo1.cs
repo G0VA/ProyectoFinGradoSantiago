@@ -16,14 +16,14 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReportRecibo : ReportClass {
+    public class CrystalReportRecibo1 : ReportClass {
         
-        public CrystalReportRecibo() {
+        public CrystalReportRecibo1() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReportRecibo.rpt";
+                return "CrystalReportRecibo1.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
         
         public override string FullResourceName {
             get {
-                return "Bienvenida.Presentacion.Pedidos.Ticket.CrystalReportRecibo.rpt";
+                return "Bienvenida.Presentacion.Pedidos.Ticket.CrystalReportRecibo1.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReportRecibo : Component, ICachedReport {
+    public class CachedCrystalReportRecibo1 : Component, ICachedReport {
         
-        public CachedCrystalReportRecibo() {
+        public CachedCrystalReportRecibo1() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReportRecibo rpt = new CrystalReportRecibo();
+            CrystalReportRecibo1 rpt = new CrystalReportRecibo1();
             rpt.Site = this.Site;
             return rpt;
         }

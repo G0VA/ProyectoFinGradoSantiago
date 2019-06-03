@@ -182,5 +182,29 @@ namespace Bienvenida.Presentacion.Pedidos
                 MessageBox.Show("Error, Selecciona el pedido a mostrar");
             }
         }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            bool n = dgvPedidos.CurrentRow.Selected;
+            if (n)
+            {
+                int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
+                Pedido p = new Pedido();
+                int idEmple = int.Parse(p.getGestor().getUnString("select ref_emple from pedidos where id_pedido = " + idPedido));
+
+                Ticket.PintaRecibo pinta = new Ticket.PintaRecibo(idEmple, idPedido);
+                pinta.Show();
+                initTable("");
+            }
+            else
+            {
+                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket");
+            }
+        }
+
+        private void cbEmple_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

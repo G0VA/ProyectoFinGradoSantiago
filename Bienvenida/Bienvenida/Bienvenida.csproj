@@ -124,10 +124,10 @@
     <Compile Include="Presentacion\Pedidos\NuevoPedido.Designer.cs">
       <DependentUpon>NuevoPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Pedidos\Ticket\CrystalReportRecibo.cs">
+    <Compile Include="Presentacion\Pedidos\Ticket\CrystalReportRecibo1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportRecibo.rpt</DependentUpon>
+      <DependentUpon>CrystalReportRecibo1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presentacion\Pedidos\Ticket\datosFactura.cs">
@@ -209,9 +209,9 @@
     <EmbeddedResource Include="Presentacion\Pedidos\NuevoPedido.resx">
       <DependentUpon>NuevoPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Pedidos\Ticket\CrystalReportRecibo.rpt">
+    <EmbeddedResource Include="Presentacion\Pedidos\Ticket\CrystalReportRecibo1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportRecibo.cs</LastGenOutput>
+      <LastGenOutput>CrystalReportRecibo1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Pedidos\Ticket\PintaRecibo.resx">
       <DependentUpon>PintaRecibo.cs</DependentUpon>

@@ -157,20 +157,27 @@ namespace Bienvenida.Presentacion.Principal
             bool n = dgvPedidos.CurrentRow.Selected;
             if (n)
             {
+                Pedido p = new Pedido();              
                 int id = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
-
-                PedidoDto pedidoDto = new PedidoDto(
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[1].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[2].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[3].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[4].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[5].Value.ToString(),
-                    dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[6].Value.ToString()
-                    );
-                ModificaPedido mod = new ModificaPedido(this,pedidoDto);
-                this.Hide();
-                mod.ShowDialog();
+                int facturado = int.Parse(p.getGestor().getUnString("select facturado from pedidos where id_pedido = " + id));
+                if (facturado==0)
+                {
+                    PedidoDto pedidoDto = new PedidoDto(
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[1].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[2].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[3].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[4].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[5].Value.ToString(),
+                        dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[6].Value.ToString()
+                        );
+                    ModificaPedido mod = new ModificaPedido(this, pedidoDto);
+                    this.Hide();
+                    mod.ShowDialog();
+                }else
+                {
+                    MessageBox.Show("Un pedido que ya se ha dado la cuenta no se puede modificar");
+                }               
             }
             else
             {
@@ -236,6 +243,11 @@ namespace Bienvenida.Presentacion.Principal
             Principal1.Contabilidad conta = new Principal1.Contabilidad(this);
             this.Hide();
             conta.ShowDialog();
+        }
+
+        private void cbEmple_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

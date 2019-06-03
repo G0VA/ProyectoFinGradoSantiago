@@ -148,6 +148,7 @@ namespace Bienvenida.Presentacion.Pedidos
                                 {
                                     this.t = this.t + (float.Parse(dgvModPedido.Rows[j].Cells[1].Value.ToString()) * float.Parse(dgvModPedido.Rows[j].Cells[2].Value.ToString()));
                                 }
+                                Math.Round(t, 2);
                                 txtTotal.Text = Convert.ToString(t);
                                 dgvModPedido.ClearSelection();
                                 txtProduct.Text = "";
@@ -162,6 +163,7 @@ namespace Bienvenida.Presentacion.Pedidos
                         {
                             this.t = this.t + (float.Parse(dgvModPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvModPedido.Rows[i].Cells[2].Value.ToString()));
                         }
+                        Math.Round(t, 2);
                         txtTotal.Text = Convert.ToString(t);
                         dgvModPedido.ClearSelection();
                         txtProduct.Text = "";
@@ -211,6 +213,7 @@ namespace Bienvenida.Presentacion.Pedidos
                     {
                         this.t = this.t + (float.Parse(dgvModPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvModPedido.Rows[i].Cells[2].Value.ToString()));
                     }
+                    Math.Round(t, 2);
                     txtTotal.Text = Convert.ToString(t);
                     dgvModPedido.ClearSelection();
                     //}
@@ -279,6 +282,11 @@ namespace Bienvenida.Presentacion.Pedidos
             {
                 MessageBox.Show("Error, revise los datos para modificar pedido");
             }
+        }
+
+        private void cbFPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

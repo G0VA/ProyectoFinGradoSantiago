@@ -165,6 +165,7 @@ namespace Bienvenida.Presentacion.Pedidos
                                 {
                                     this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[j].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[j].Cells[2].Value.ToString()));
                                 }
+                                Math.Round(t, 2);
                                 txtTotal.Text = Convert.ToString(t);
                                 dgvNuevoPedido.ClearSelection();
                                 txtProduct.Text = "";
@@ -179,6 +180,7 @@ namespace Bienvenida.Presentacion.Pedidos
                         {
                             this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()));
                         }
+                        Math.Round(t, 2);
                         txtTotal.Text = Convert.ToString(t);
                         dgvNuevoPedido.ClearSelection();
                         txtProduct.Text = "";
@@ -225,6 +227,7 @@ namespace Bienvenida.Presentacion.Pedidos
                         {
                             this.t = this.t + (float.Parse(dgvNuevoPedido.Rows[i].Cells[1].Value.ToString()) * float.Parse(dgvNuevoPedido.Rows[i].Cells[2].Value.ToString()));
                         }
+                        Math.Round(t, 2);
                         txtTotal.Text = Convert.ToString(t);
                         dgvNuevoPedido.ClearSelection();
                     //}
@@ -238,6 +241,16 @@ namespace Bienvenida.Presentacion.Pedidos
             {
                 MessageBox.Show("Error, Selecciona el producto a quitar del pedido");
             }
+        }
+
+        private void cbEmples_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbFPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

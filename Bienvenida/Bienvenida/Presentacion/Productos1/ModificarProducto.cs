@@ -109,6 +109,18 @@ namespace Bienvenida.Presentacion.Productos
 
         }
 
+        private Boolean existeProduct(String nombre)
+        {
+            Boolean existe = false;
+            Producto p = new Producto();
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from productos where upper(nombre_producto) = '" + nombre.ToUpper() + "'"));
+            if (count > 1)
+                existe = true;
+
+            return existe;
+
+        }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (check())
@@ -140,6 +152,45 @@ namespace Bienvenida.Presentacion.Productos
             {
                 MessageBox.Show("Rellena todos los campos antes de añadir producto");
             }
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) &&
+                e.KeyChar != (char)Keys.Back &&
+                e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (((TextBox)sender).Text.Contains('.'))
+                        e.Handled = true;
+                    else
+                        e.Handled = false;
+                }
+            }
+        }
+
+        private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) &&
+                e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }          
+        }
+
+        private void cbTipo1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTipo2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

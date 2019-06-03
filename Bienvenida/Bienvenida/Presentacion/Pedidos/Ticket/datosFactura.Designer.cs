@@ -921,6 +921,8 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
             
             private global::System.Data.DataColumn columnPAGO;
             
+            private global::System.Data.DataColumn columnIVA;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PedidoDataTable() {
@@ -988,6 +990,14 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IVAColumn {
+                get {
+                    return this.columnIVA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1023,13 +1033,14 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PedidoRow AddPedidoRow(string ID, string FECHA, string TOTAL, string PAGO) {
+            public PedidoRow AddPedidoRow(string ID, string FECHA, string TOTAL, string PAGO, string IVA) {
                 PedidoRow rowPedidoRow = ((PedidoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         FECHA,
                         TOTAL,
-                        PAGO};
+                        PAGO,
+                        IVA};
                 rowPedidoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPedidoRow);
                 return rowPedidoRow;
@@ -1056,6 +1067,7 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
                 this.columnFECHA = base.Columns["FECHA"];
                 this.columnTOTAL = base.Columns["TOTAL"];
                 this.columnPAGO = base.Columns["PAGO"];
+                this.columnIVA = base.Columns["IVA"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1069,6 +1081,8 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
                 base.Columns.Add(this.columnTOTAL);
                 this.columnPAGO = new global::System.Data.DataColumn("PAGO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPAGO);
+                this.columnIVA = new global::System.Data.DataColumn("IVA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIVA);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1501,6 +1515,22 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string IVA {
+                get {
+                    try {
+                        return ((string)(this[this.tablePedido.IVAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IVA\' de la tabla \'Pedido\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePedido.IVAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tablePedido.IDColumn);
             }
@@ -1545,6 +1575,18 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPAGONull() {
                 this[this.tablePedido.PAGOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIVANull() {
+                return this.IsNull(this.tablePedido.IVAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIVANull() {
+                this[this.tablePedido.IVAColumn] = global::System.Convert.DBNull;
             }
         }
         

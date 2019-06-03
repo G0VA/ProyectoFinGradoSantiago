@@ -190,5 +190,10 @@ namespace Bienvenida.Presentacion.Principal1
             this.Hide();
             gra.ShowDialog();
         }
+
+        private void cbEmple_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

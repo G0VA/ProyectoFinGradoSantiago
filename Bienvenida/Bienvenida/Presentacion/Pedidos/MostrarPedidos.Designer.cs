@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ckPagado = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnTicket = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +115,7 @@
             this.cbEmple.Name = "cbEmple";
             this.cbEmple.Size = new System.Drawing.Size(121, 21);
             this.cbEmple.TabIndex = 20;
+            this.cbEmple.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEmple_KeyPress);
             // 
             // label3
             // 
@@ -239,12 +241,27 @@
             this.label4.TabIndex = 33;
             this.label4.Text = "Pagado";
             // 
+            // btnTicket
+            // 
+            this.btnTicket.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTicket.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnTicket.Location = new System.Drawing.Point(321, 560);
+            this.btnTicket.Name = "btnTicket";
+            this.btnTicket.Size = new System.Drawing.Size(201, 64);
+            this.btnTicket.TabIndex = 35;
+            this.btnTicket.Text = "Imprimir Ticket";
+            this.btnTicket.UseVisualStyleBackColor = false;
+            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
+            // 
             // MostrarPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(858, 629);
+            this.Controls.Add(this.btnTicket);
             this.Controls.Add(this.ckPagado);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ckFacturado);
@@ -292,5 +309,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckPagado;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnTicket;
     }
 }

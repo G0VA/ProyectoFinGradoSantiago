@@ -178,6 +178,7 @@
             this.cbEmple.Name = "cbEmple";
             this.cbEmple.Size = new System.Drawing.Size(121, 21);
             this.cbEmple.TabIndex = 17;
+            this.cbEmple.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEmple_KeyPress);
             // 
             // label3
             // 

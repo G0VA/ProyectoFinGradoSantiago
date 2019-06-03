@@ -73,6 +73,7 @@
             this.cbEmples.Name = "cbEmples";
             this.cbEmples.Size = new System.Drawing.Size(186, 21);
             this.cbEmples.TabIndex = 12;
+            this.cbEmples.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEmples_KeyPress);
             // 
             // cbFPago
             // 
@@ -82,6 +83,7 @@
             this.cbFPago.Name = "cbFPago";
             this.cbFPago.Size = new System.Drawing.Size(137, 21);
             this.cbFPago.TabIndex = 13;
+            this.cbFPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbFPago_KeyPress);
             // 
             // label3
             // 
@@ -139,6 +141,7 @@
             // 
             // txtProduct
             // 
+            this.txtProduct.Enabled = false;
             this.txtProduct.Location = new System.Drawing.Point(17, 273);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(156, 20);
@@ -232,6 +235,7 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
             this.txtTotal.Location = new System.Drawing.Point(17, 416);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(102, 20);

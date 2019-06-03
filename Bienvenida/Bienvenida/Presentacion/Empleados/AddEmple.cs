@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,7 +26,11 @@ namespace Bienvenida.Presentacion.Empleados
             this.Dispose();
             this.emple.Show();
         }
-
+        public static bool checkDNI(String dni)
+        {
+            Regex regex = new Regex("[0-9]{8,8}[A-Za-z]");
+            return regex.IsMatch(dni);
+        }
         public Boolean check()
         {
             Boolean correcto = true;
@@ -44,7 +49,15 @@ namespace Bienvenida.Presentacion.Empleados
             {
                 correcto = false;
 
+            }else
+            {
+                if(!checkDNI(txtDni.Text.Replace("'", ""))){
+                    correcto = false;
+                    MessageBox.Show("DNI no valido. Formato valido XXXXXXXXA");
+                    return correcto;
+                }
             }
+
 
             if (String.IsNullOrEmpty(txtPass.Text.Replace("'", "")))
             {
@@ -62,24 +75,43 @@ namespace Bienvenida.Presentacion.Empleados
 
         }
 
+        private Boolean existeEmple(String dni)
+        {
+            Boolean existe = false;
+            Usuario u = new Usuario();
+            int count = Int16.Parse(u.gestor().getUnString("select count(*) from empleados where upper(dni) = '" + dni.ToUpper() + "'"));
+            if (count > 0)
+                existe = true;
+
+            return existe;
+
+        }
+
         private void btnAlta_Click(object sender, EventArgs e)
         {
             if (check())
             {
-                Usuario u = new Usuario();
-                String idTexto = u.gestor().getUnString("select count(*) from empleados");
-                int id = Int16.Parse(idTexto);
-                id++;
 
-                String sql = "insert into empleados (ID_EMPLE, NOMBRE, APELLIDOS, DNI, CONTRA, BORRADO, CONECTADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', '" + txtApe.Text.Replace("'", "") + "', '" + txtDni.Text.Replace("'", "") + "', '" + txtPass.Text.Replace("'", "") + "', 0, 0)";
+                if(!existeEmple(txtDni.Text.Replace("'", "")))
+                {
+                    Usuario u = new Usuario();
+                    String idTexto = u.gestor().getUnString("select count(*) from empleados");
+                    int id = Int16.Parse(idTexto);
+                    id++;
 
-                u.gestor().setData(sql);
+                    String sql = "insert into empleados (ID_EMPLE, NOMBRE, APELLIDOS, DNI, CONTRA, BORRADO, CONECTADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', '" + txtApe.Text.Replace("'", "") + "', '" + txtDni.Text.Replace("'", "") + "', '" + txtPass.Text.Replace("'", "") + "', 0, 0)";
 
-                MessageBox.Show("Alta realizada correctamente");
+                    u.gestor().setData(sql);
 
-                this.emple.initTable("");
-                this.Dispose();
-                emple.Show();
+                    MessageBox.Show("Alta realizada correctamente");
+
+                    this.emple.initTable("");
+                    this.Dispose();
+                    emple.Show();
+                }else
+                {
+                    MessageBox.Show("Ya existe un empleado con ese DNI");
+                }
             }
             else
             {
