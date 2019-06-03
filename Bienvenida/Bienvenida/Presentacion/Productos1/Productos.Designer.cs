@@ -81,6 +81,7 @@
             this.cbTipo1.Size = new System.Drawing.Size(121, 21);
             this.cbTipo1.TabIndex = 2;
             this.cbTipo1.SelectedIndexChanged += new System.EventHandler(this.cambioValor);
+            this.cbTipo1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo1_KeyPress);
             // 
             // cbTipo2
             // 
@@ -90,6 +91,7 @@
             this.cbTipo2.Name = "cbTipo2";
             this.cbTipo2.Size = new System.Drawing.Size(121, 21);
             this.cbTipo2.TabIndex = 3;
+            this.cbTipo2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo2_KeyPress);
             // 
             // btnFiltrar
             // 

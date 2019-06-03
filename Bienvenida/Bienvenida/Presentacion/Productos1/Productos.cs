@@ -260,5 +260,15 @@ namespace Bienvenida.Presentacion.Productos
                 modObserver.Show();
             }
         }
+
+        private void cbTipo1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTipo2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
