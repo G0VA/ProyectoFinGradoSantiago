@@ -1,4 +1,5 @@
 ﻿using Bienvenida.Dominio;
+using Bienvenida.Presentacion.Productos1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,7 @@ namespace Bienvenida.Presentacion.Productos
             Producto p = new Producto();
             p.getGestor().readInDB("TIPO", "PRODUCTOS_TIPO1", cond);
             DataTable tipo1 = p.getGestor().getTabla();
+            cbTipo1.Items.Clear();
             cbTipo2.Items.Clear();
             foreach (DataRow row in tipo1.Rows)
             {
@@ -175,6 +177,47 @@ namespace Bienvenida.Presentacion.Productos
         private void cbTipo2_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private Boolean existeTipo(String nombre)
+        {
+            Boolean existe = false;
+            Producto p = new Producto();
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from productos_tipo1 where upper(tipo) = '" + nombre.ToUpper() + "'"));
+            if (count > 0)
+                existe = true;
+
+            return existe;
+
+        }
+
+        private void btnCreaTipo1_Click(object sender, EventArgs e)
+        {
+            string categoria = Microsoft.VisualBasic.Interaction.InputBox("Introducir nueva categoria");
+            if (!String.IsNullOrEmpty(categoria))
+            {
+                if (!existeTipo(categoria))
+                {
+                    Producto prod = new Producto();
+                    int count = Int16.Parse(prod.getGestor().getUnString("select count(*) from productos_tipo1"));
+                    count++;
+                    prod.getGestor().setData("insert into productos_tipo1 (ID,TIPO) values (" + count + ",'" + categoria.ToUpper() + "')");
+                    initTipo1("" + " order by id");
+                    cbTipo2.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe el categoria");
+                    
+                }
+            }          
+        }
+
+        private void btnCreaTipo2_Click(object sender, EventArgs e)
+        {
+            CreaCategoria crea = new CreaCategoria(this);
+            this.Hide();
+            crea.ShowDialog();
         }
     }
 }

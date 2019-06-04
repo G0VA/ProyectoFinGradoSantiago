@@ -41,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbTipo1 = new System.Windows.Forms.ComboBox();
+            this.btnCreaTipo2 = new System.Windows.Forms.Button();
+            this.btnCreaTipo1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCerrar
@@ -162,12 +164,40 @@
             this.cbTipo1.SelectedIndexChanged += new System.EventHandler(this.cambioValor);
             this.cbTipo1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTipo1_KeyPress);
             // 
+            // btnCreaTipo2
+            // 
+            this.btnCreaTipo2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCreaTipo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreaTipo2.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnCreaTipo2.Location = new System.Drawing.Point(388, 266);
+            this.btnCreaTipo2.Name = "btnCreaTipo2";
+            this.btnCreaTipo2.Size = new System.Drawing.Size(131, 29);
+            this.btnCreaTipo2.TabIndex = 30;
+            this.btnCreaTipo2.Text = "Crear tipo 2";
+            this.btnCreaTipo2.UseVisualStyleBackColor = false;
+            this.btnCreaTipo2.Click += new System.EventHandler(this.btnCreaTipo2_Click);
+            // 
+            // btnCreaTipo1
+            // 
+            this.btnCreaTipo1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCreaTipo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreaTipo1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnCreaTipo1.Location = new System.Drawing.Point(388, 182);
+            this.btnCreaTipo1.Name = "btnCreaTipo1";
+            this.btnCreaTipo1.Size = new System.Drawing.Size(131, 29);
+            this.btnCreaTipo1.TabIndex = 29;
+            this.btnCreaTipo1.Text = "Crear tipo 1";
+            this.btnCreaTipo1.UseVisualStyleBackColor = false;
+            this.btnCreaTipo1.Click += new System.EventHandler(this.btnCreaTipo1_Click);
+            // 
             // ModificarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(890, 587);
+            this.Controls.Add(this.btnCreaTipo2);
+            this.Controls.Add(this.btnCreaTipo1);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.cbTipo2);
@@ -201,5 +231,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbTipo1;
+        private System.Windows.Forms.Button btnCreaTipo2;
+        private System.Windows.Forms.Button btnCreaTipo1;
     }
 }

@@ -124,7 +124,8 @@ namespace Bienvenida.Presentacion.Productos
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            bool n = dgvProductos.CurrentRow.Selected;
+            //bool n = dgvProductos.CurrentRow.Selected;
+            bool n = dgvProductos.SelectedRows.Count == 0 ? false : true;
             if (n)
             {
                 ProductoDto p = new ProductoDto();
@@ -144,7 +145,6 @@ namespace Bienvenida.Presentacion.Productos
             {
                 MessageBox.Show("Error, Selecciona el producto a modificar");
             }
-
         }
 
         private void cambioValor(object sender, EventArgs e)
@@ -197,7 +197,8 @@ namespace Bienvenida.Presentacion.Productos
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            bool n = dgvProductos.CurrentRow.Selected;
+            //bool n = dgvProductos.CurrentRow.Selected;
+            bool n = dgvProductos.SelectedRows.Count == 0 ? false : true;
             if (n)
             {
                 Producto p = new Producto();

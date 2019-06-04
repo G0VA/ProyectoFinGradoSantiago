@@ -41,6 +41,8 @@
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.btnAñadir = new System.Windows.Forms.Button();
+            this.btnCreaTipo1 = new System.Windows.Forms.Button();
+            this.btnCreaTipo2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -161,12 +163,40 @@
             this.btnAñadir.UseVisualStyleBackColor = true;
             this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
+            // btnCreaTipo1
+            // 
+            this.btnCreaTipo1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCreaTipo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreaTipo1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnCreaTipo1.Location = new System.Drawing.Point(389, 172);
+            this.btnCreaTipo1.Name = "btnCreaTipo1";
+            this.btnCreaTipo1.Size = new System.Drawing.Size(131, 29);
+            this.btnCreaTipo1.TabIndex = 21;
+            this.btnCreaTipo1.Text = "Crear tipo 1";
+            this.btnCreaTipo1.UseVisualStyleBackColor = false;
+            this.btnCreaTipo1.Click += new System.EventHandler(this.btnCreaTipo1_Click);
+            // 
+            // btnCreaTipo2
+            // 
+            this.btnCreaTipo2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCreaTipo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreaTipo2.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnCreaTipo2.Location = new System.Drawing.Point(389, 256);
+            this.btnCreaTipo2.Name = "btnCreaTipo2";
+            this.btnCreaTipo2.Size = new System.Drawing.Size(131, 29);
+            this.btnCreaTipo2.TabIndex = 22;
+            this.btnCreaTipo2.Text = "Crear tipo 2";
+            this.btnCreaTipo2.UseVisualStyleBackColor = false;
+            this.btnCreaTipo2.Click += new System.EventHandler(this.btnCreaTipo2_Click);
+            // 
             // NuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(901, 603);
+            this.Controls.Add(this.btnCreaTipo2);
+            this.Controls.Add(this.btnCreaTipo1);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.cbTipo2);
@@ -200,5 +230,7 @@
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Button btnAñadir;
+        private System.Windows.Forms.Button btnCreaTipo1;
+        private System.Windows.Forms.Button btnCreaTipo2;
     }
 }
