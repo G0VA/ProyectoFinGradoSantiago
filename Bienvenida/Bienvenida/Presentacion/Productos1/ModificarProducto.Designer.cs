@@ -155,9 +155,6 @@
             // 
             this.cbTipo1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTipo1.FormattingEnabled = true;
-            this.cbTipo1.Items.AddRange(new object[] {
-            "Bebida",
-            "Comida"});
             this.cbTipo1.Location = new System.Drawing.Point(180, 185);
             this.cbTipo1.Name = "cbTipo1";
             this.cbTipo1.Size = new System.Drawing.Size(158, 21);

@@ -27,6 +27,22 @@ namespace Bienvenida.Presentacion.Inicio
             this.ini.Show();
         }
 
+        private String desenciptaPass(String pass)
+        {
+            string result = string.Empty;
+            byte[] decryted = Convert.FromBase64String(pass);
+            result = Encoding.Unicode.GetString(decryted);
+            return result;
+        }
+
+        private String encriptaPass(String pass)
+        {
+            string result = string.Empty;
+            byte[] encryted = Encoding.Unicode.GetBytes(pass);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Usuario u1 = new Usuario();
@@ -35,19 +51,27 @@ namespace Bienvenida.Presentacion.Inicio
             GestorUsuario gestor = u1.gestor();
             if (gestor.existsUser(u1.getDni()))
             {
-                u1.setContra(txtPass.Text);
-                if (gestor.ValidarConx(u1)>0)
+                int count = Int16.Parse(gestor.getUnString("select count(*) from empleados where upper(DNI) = '" + u1.getDni().ToUpper() + "' and conectado = 1"));
+                if(count > 0)
                 {
-                    MessageBox.Show("Inicio sesion correcto");
-                    gestor.setData("update empleados set CONECTADO = 1 where upper(DNI) = '"+u1.getDni().ToUpper()+"'");
-                    ini.añadeUser(u1);
-                    this.Dispose();
-                    ini.Show();
+                    MessageBox.Show("El empleado ya se encuentra conectado");
                 }
                 else
                 {
-                    MessageBox.Show("Error, contraseña incorrecto");
-                }
+                    u1.setContra(encriptaPass(txtPass.Text));
+                    if (gestor.ValidarConx(u1) > 0)
+                    {
+                        MessageBox.Show("Inicio sesion correcto");
+                        gestor.setData("update empleados set CONECTADO = 1 where upper(DNI) = '" + u1.getDni().ToUpper() + "'");
+                        ini.añadeUser(u1);
+                        this.Dispose();
+                        ini.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error, contraseña incorrecto");
+                    }
+                }   
             }
             else
             {

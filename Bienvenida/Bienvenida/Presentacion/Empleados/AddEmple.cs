@@ -87,6 +87,15 @@ namespace Bienvenida.Presentacion.Empleados
 
         }
 
+        private String encriptaPass(String pass)
+        {
+            string result = string.Empty;
+            byte[] encryted = Encoding.Unicode.GetBytes(pass);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
+
+
         private void btnAlta_Click(object sender, EventArgs e)
         {
             if (check())
@@ -94,12 +103,14 @@ namespace Bienvenida.Presentacion.Empleados
 
                 if(!existeEmple(txtDni.Text.Replace("'", "")))
                 {
+                    String pass = encriptaPass(txtPass.Text.Replace("'", ""));
+
                     Usuario u = new Usuario();
                     String idTexto = u.gestor().getUnString("select count(*) from empleados");
                     int id = Int16.Parse(idTexto);
                     id++;
 
-                    String sql = "insert into empleados (ID_EMPLE, NOMBRE, APELLIDOS, DNI, CONTRA, BORRADO, CONECTADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', '" + txtApe.Text.Replace("'", "") + "', '" + txtDni.Text.Replace("'", "") + "', '" + txtPass.Text.Replace("'", "") + "', 0, 0)";
+                    String sql = "insert into empleados (ID_EMPLE, NOMBRE, APELLIDOS, DNI, CONTRA, BORRADO, CONECTADO) VALUES (" + id + ", '" + txtNombre.Text.Replace("'", "") + "', '" + txtApe.Text.Replace("'", "") + "', '" + txtDni.Text.Replace("'", "") + "', '" + pass + "', 0, 0)";
 
                     u.gestor().setData(sql);
 

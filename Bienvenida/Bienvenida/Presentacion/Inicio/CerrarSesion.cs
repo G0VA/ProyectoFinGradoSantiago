@@ -31,6 +31,13 @@ namespace Bienvenida.Presentacion.Inicio
             this.Dispose();
             this.ini.Show();
         }
+        private String encriptaPass(String pass)
+        {
+            string result = string.Empty;
+            byte[] encryted = Encoding.Unicode.GetBytes(pass);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -40,19 +47,27 @@ namespace Bienvenida.Presentacion.Inicio
             GestorUsuario gestor = u1.gestor();
             if (gestor.existsUser(u1.getDni()))
             {
-                u1.setContra(txtPass.Text);
-                if (gestor.ValidarConx(u1) > 0)
+                int count = Int16.Parse(gestor.getUnString("select count(*) from empleados where upper(DNI) = '" + u1.getDni().ToUpper() + "' and conectado = 0"));
+                if (count > 0)
                 {
-                    MessageBox.Show("Cierre sesion correcto");
-                    gestor.setData("update empleados set CONECTADO = 0 where upper(DNI) = '" + u1.getDni().ToUpper() + "'");
-                    ini.QuitaUser(u1);
-                    this.Dispose();
-                    ini.Show();
+                    MessageBox.Show("El empleado no se encuentra conectado");
                 }
                 else
                 {
-                    MessageBox.Show("Error, contraseña incorrecto");
-                }
+                    u1.setContra(encriptaPass(txtPass.Text));
+                    if (gestor.ValidarConx(u1) > 0)
+                    {
+                        MessageBox.Show("Cierre sesion correcto");
+                        gestor.setData("update empleados set CONECTADO = 0 where upper(DNI) = '" + u1.getDni().ToUpper() + "'");
+                        ini.QuitaUser(u1);
+                        this.Dispose();
+                        ini.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error, contraseña incorrecto");
+                    }
+                }       
             }
             else
             {
