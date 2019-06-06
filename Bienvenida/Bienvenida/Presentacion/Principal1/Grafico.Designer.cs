@@ -70,7 +70,9 @@
             this.ClientSize = new System.Drawing.Size(1158, 600);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.chart1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Grafico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Grafico";
             this.Load += new System.EventHandler(this.Grafico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

@@ -42,11 +42,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label1.Location = new System.Drawing.Point(197, 44);
+            this.label1.Location = new System.Drawing.Point(178, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 63);
+            this.label1.Size = new System.Drawing.Size(351, 63);
             this.label1.TabIndex = 0;
-            this.label1.Text = "EASYBAR";
+            this.label1.Text = "EASY-SHOP";
             // 
             // btnInicioSesion
             // 
@@ -113,6 +113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(704, 523);
+            this.ControlBox = false;
             this.Controls.Add(this.btnEmple);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCerrarSesion);
@@ -120,8 +121,9 @@
             this.Controls.Add(this.btnInicioSesion);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioApp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Shown += new System.EventHandler(this.refrescar);
             this.ResumeLayout(false);

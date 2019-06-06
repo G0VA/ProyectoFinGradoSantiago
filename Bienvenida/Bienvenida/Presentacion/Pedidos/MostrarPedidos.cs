@@ -179,7 +179,7 @@ namespace Bienvenida.Presentacion.Pedidos
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el pedido a mostrar");
+                MessageBox.Show("Error, Selecciona el pedido a mostrar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -198,7 +198,7 @@ namespace Bienvenida.Presentacion.Pedidos
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket");
+                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

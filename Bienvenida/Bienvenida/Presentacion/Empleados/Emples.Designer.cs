@@ -151,7 +151,9 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.btnAlta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Emples";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Emples";
             this.Shown += new System.EventHandler(this.mostrar);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmples)).EndInit();

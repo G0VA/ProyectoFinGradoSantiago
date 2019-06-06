@@ -25,7 +25,7 @@ namespace Bienvenida.Presentacion.Pedidos
             InitializeComponent();
             iniCombox();
             txtCliente.Text = pedidoDto.getCliente();
-            txtDni.Text = pedidoDto.getDni() + " -- " +pedidoDto.getNombre();
+            txtDni.Text = pedidoDto.getDni();
             txtId.Text = pedidoDto.getId();
             txtTotal.Text = pedidoDto.getTotal();
             iniTable("and ref_pedido = "+pedidoDto.getId());
@@ -180,18 +180,18 @@ namespace Bienvenida.Presentacion.Pedidos
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un producto");
+                    MessageBox.Show("Debes seleccionar un producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 if (stock != -1)
                 {
-                    MessageBox.Show("No queda stock suficiente de este producto");
+                    MessageBox.Show("No queda stock suficiente de este producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un producto");
+                    MessageBox.Show("Debes seleccionar un producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -220,12 +220,12 @@ namespace Bienvenida.Presentacion.Pedidos
                 }
                 else
                 {
-                    MessageBox.Show("Error, Selecciona el producto a quitar del pedido");
+                    MessageBox.Show("Error, Selecciona el producto a quitar del pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el producto a quitar del pedido");
+                MessageBox.Show("Error, Selecciona el producto a quitar del pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -280,7 +280,7 @@ namespace Bienvenida.Presentacion.Pedidos
             }
             else
             {
-                MessageBox.Show("Error, revise los datos para modificar pedido");
+                MessageBox.Show("Error, revise los datos para modificar pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

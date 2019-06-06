@@ -97,6 +97,7 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(259, 301);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(158, 20);
             this.txtPass.TabIndex = 15;
             // 
@@ -140,6 +141,7 @@
             // 
             this.txtPass2.Location = new System.Drawing.Point(259, 360);
             this.txtPass2.Name = "txtPass2";
+            this.txtPass2.PasswordChar = '*';
             this.txtPass2.Size = new System.Drawing.Size(158, 20);
             this.txtPass2.TabIndex = 19;
             // 
@@ -171,7 +173,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddEmple";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEmple";
             this.ResumeLayout(false);
             this.PerformLayout();

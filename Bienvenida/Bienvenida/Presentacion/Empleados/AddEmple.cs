@@ -53,7 +53,7 @@ namespace Bienvenida.Presentacion.Empleados
             {
                 if(!checkDNI(txtDni.Text.Replace("'", ""))){
                     correcto = false;
-                    MessageBox.Show("DNI no valido. Formato valido XXXXXXXXA");
+                    MessageBox.Show("DNI no valido. Formato valido XXXXXXXXA", "",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return correcto;
                 }
             }
@@ -68,7 +68,7 @@ namespace Bienvenida.Presentacion.Empleados
             if(!String.Equals(txtPass.Text.Replace("'", ""), txtPass2.Text.Replace("'", "")))
             {
                 correcto = false;
-                MessageBox.Show("Las contraseñas no coinciden");
+                MessageBox.Show("Las contraseñas no coinciden", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return correcto;
@@ -114,19 +114,19 @@ namespace Bienvenida.Presentacion.Empleados
 
                     u.gestor().setData(sql);
 
-                    MessageBox.Show("Alta realizada correctamente");
+                    MessageBox.Show("Alta realizada correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     this.emple.initTable("");
                     this.Dispose();
                     emple.Show();
                 }else
                 {
-                    MessageBox.Show("Ya existe un empleado con ese DNI");
+                    MessageBox.Show("Ya existe un empleado con ese DNI.","",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Error, revise los datos.");
+                MessageBox.Show("Error, revise los datos.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
                 
         }

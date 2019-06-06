@@ -109,7 +109,9 @@
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbTipo1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CreaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CreaCategoria";
             this.ResumeLayout(false);
             this.PerformLayout();

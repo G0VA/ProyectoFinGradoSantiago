@@ -49,7 +49,7 @@ namespace Bienvenida.Presentacion.Pedidos
             }
             if (check() && (f1 != -1 && f1 > 0))
             {
-                String idPedidoText = o.getGestor().getUnString("select MAX(id_pedido) from pedidos");
+                String idPedidoText = o.getGestor().getUnString("select count(*) from pedidos");
                 int idPedido = Int32.Parse(idPedidoText);
                 idPedido++;
                 String id_emple = o.getGestor().getUnString("select id_emple from empleados where dni = '"+ cbEmples.SelectedItem.ToString().Replace("'", "") + "'");
@@ -84,7 +84,7 @@ namespace Bienvenida.Presentacion.Pedidos
             }
             else
             {
-                MessageBox.Show("Error, revise los datos para crear pedido");
+                MessageBox.Show("Error, revise los datos para crear pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -189,18 +189,18 @@ namespace Bienvenida.Presentacion.Pedidos
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un producto");
+                    MessageBox.Show("Debes seleccionar un producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 if (stock != -1)
                 {
-                    MessageBox.Show("No queda stock suficiente de este producto");
+                    MessageBox.Show("No queda stock suficiente de este producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un producto");
+                    MessageBox.Show("Debes seleccionar un producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                     
             }
@@ -234,12 +234,12 @@ namespace Bienvenida.Presentacion.Pedidos
                 }
                 else
                 {
-                    MessageBox.Show("Error, Selecciona el producto a quitar del pedido");
+                    MessageBox.Show("Error, Selecciona el producto a quitar del pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el producto a quitar del pedido");
+                MessageBox.Show("Error, Selecciona el producto a quitar del pedido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

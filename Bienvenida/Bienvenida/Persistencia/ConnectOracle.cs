@@ -16,7 +16,7 @@ namespace Bienvenida.Persistencia
         const String driver = "Data Source=(DESCRIPTION ="
         + "(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = LOCALHOST)(PORT = 1521)))"
         + "(CONNECT_DATA = (SERVICE_NAME = xe))); "
-        + "User Id=exam; Password=exam;";
+        + "User Id=littlerp; Password=littlerp;";
 
         ////////////////////////////////////////////////////////////
 

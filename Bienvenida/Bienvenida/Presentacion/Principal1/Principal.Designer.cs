@@ -273,6 +273,7 @@
             this.Controls.Add(this.lblFecha);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.Shown += new System.EventHandler(this.mostrar);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();

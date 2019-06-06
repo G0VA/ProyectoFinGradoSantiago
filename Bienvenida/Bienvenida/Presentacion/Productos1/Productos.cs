@@ -143,7 +143,7 @@ namespace Bienvenida.Presentacion.Productos
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el producto a modificar");
+                MessageBox.Show("Error, Selecciona el producto a modificar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -208,13 +208,13 @@ namespace Bienvenida.Presentacion.Productos
                 if (MessageBox.Show("¿Quieres eliminar a este producto?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     p.getGestor().setData(sql);
-                    MessageBox.Show("Producto eliminado con exito");
+                    MessageBox.Show("Producto eliminado con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     initTable("");
                 }
             }
             else
             {
-                MessageBox.Show("Error, selecciona un producto");
+                MessageBox.Show("Error, selecciona un producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvProductos.ClearSelection();
 
 

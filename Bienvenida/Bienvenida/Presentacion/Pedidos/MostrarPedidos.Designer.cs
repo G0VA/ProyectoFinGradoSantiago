@@ -280,7 +280,9 @@
             this.Controls.Add(this.btnDetalles);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvPedidos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MostrarPedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MostrarPedidos";
             this.Shown += new System.EventHandler(this.MostrarPedidos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();

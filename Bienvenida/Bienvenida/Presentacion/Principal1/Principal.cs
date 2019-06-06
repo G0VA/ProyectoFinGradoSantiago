@@ -116,7 +116,7 @@ namespace Bienvenida.Presentacion.Principal
 
             foreach (DataRow row in tProducts.Rows)
             {
-                MessageBox.Show("///ALERTA/// el producto "+ row["NOMBRE"].ToString()+" tiene el stock inferior a 10.");
+                MessageBox.Show("///ALERTA/// el producto "+ row["NOMBRE"].ToString()+" tiene el stock inferior a 10.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 p.getGestor().setData("update productos set avisado = 1 where id_producto = "+ row["ID"].ToString());
             }
         }
@@ -176,12 +176,12 @@ namespace Bienvenida.Presentacion.Principal
                     mod.ShowDialog();
                 }else
                 {
-                    MessageBox.Show("Un pedido que ya se ha dado la cuenta no se puede modificar");
+                    MessageBox.Show("Un pedido que ya se ha dado la cuenta no se puede modificar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }               
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el pedido a modificar");
+                MessageBox.Show("Error, Selecciona el pedido a modificar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -202,7 +202,7 @@ namespace Bienvenida.Presentacion.Principal
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket");
+                MessageBox.Show("Error, Selecciona el pedido a sacar Ticket", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -217,17 +217,17 @@ namespace Bienvenida.Presentacion.Principal
                     int idPedido = int.Parse(dgvPedidos.Rows[dgvPedidos.CurrentRow.Index].Cells[0].Value.ToString());
                     Pedido p = new Pedido();
                     p.getGestor().setData("update pedidos set pagado = 1 where id_pedido = " + idPedido);
-                    MessageBox.Show("Pedido pagado");
+                    MessageBox.Show("Pedido pagado", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     initTable("");
                 }
                 else
                 {
-                    MessageBox.Show("Error, el pedido debe estar facturado antes de pagar");
+                    MessageBox.Show("Error, el pedido debe estar facturado antes de pagar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Error, Selecciona el pedido a pagar");
+                MessageBox.Show("Error, Selecciona el pedido a pagar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

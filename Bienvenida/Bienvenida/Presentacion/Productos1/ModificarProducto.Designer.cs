@@ -210,7 +210,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnCerrar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModificarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ModificarProducto";
             this.ResumeLayout(false);
             this.PerformLayout();

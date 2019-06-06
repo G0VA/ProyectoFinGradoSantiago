@@ -50,14 +50,14 @@ namespace Bienvenida.Presentacion.Inicio
                 int count = Int16.Parse(gestor.getUnString("select count(*) from empleados where upper(DNI) = '" + u1.getDni().ToUpper() + "' and conectado = 0"));
                 if (count > 0)
                 {
-                    MessageBox.Show("El empleado no se encuentra conectado");
+                    MessageBox.Show("El empleado no se encuentra conectado", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     u1.setContra(encriptaPass(txtPass.Text));
                     if (gestor.ValidarConx(u1) > 0)
                     {
-                        MessageBox.Show("Cierre sesion correcto");
+                        MessageBox.Show("Cierre sesion correcto", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         gestor.setData("update empleados set CONECTADO = 0 where upper(DNI) = '" + u1.getDni().ToUpper() + "'");
                         ini.QuitaUser(u1);
                         this.Dispose();
@@ -65,13 +65,13 @@ namespace Bienvenida.Presentacion.Inicio
                     }
                     else
                     {
-                        MessageBox.Show("Error, contraseña incorrecto");
+                        MessageBox.Show("Error, contraseña incorrecto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }       
             }
             else
             {
-                MessageBox.Show("Error, DNI incorrecto");
+                MessageBox.Show("Error, DNI incorrecto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

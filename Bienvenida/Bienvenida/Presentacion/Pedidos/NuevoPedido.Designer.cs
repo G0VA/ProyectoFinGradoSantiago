@@ -265,7 +265,9 @@
             this.Controls.Add(this.cbFPago);
             this.Controls.Add(this.cbEmples);
             this.Controls.Add(this.btnCreaPedido);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NuevoPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NuevoPedido";
             this.Shown += new System.EventHandler(this.NuevoPedido_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();

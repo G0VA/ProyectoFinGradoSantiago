@@ -345,7 +345,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbEmple);
             this.Controls.Add(this.btnVolver);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Contabilidad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contabilidad";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

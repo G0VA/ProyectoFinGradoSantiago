@@ -81,7 +81,7 @@ namespace Bienvenida.Presentacion.Pedidos.Ticket
             tcustomers.Columns.Add("precio", Type.GetType("System.String"));
             tcustomers.Columns.Add("total", Type.GetType("System.String"));
 
-            String sql1 = "select o.cantidad, p.nombre_producto nombre, p.precio, (o.cantidad * p.precio) total from pedidos_productos o inner join productos p on p.ID_PRODUCTO = o.ref_producto where o.ref_pedido = " + idPedido;
+            String sql1 = "select o.cantidad, p.nombre_producto nombre, o.precio, (o.cantidad * p.precio) total from pedidos_productos o inner join productos p on p.ID_PRODUCTO = o.ref_producto where o.ref_pedido = " + idPedido;
 
             data = search.getData(sql1, "exam");
             DataTable tmp = data.Tables["exam"];

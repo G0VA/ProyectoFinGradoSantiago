@@ -209,7 +209,9 @@
             this.Controls.Add(this.cbTipo1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NuevoProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NuevoProducto";
             this.ResumeLayout(false);
             this.PerformLayout();

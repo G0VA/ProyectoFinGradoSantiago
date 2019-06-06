@@ -85,13 +85,13 @@ namespace Bienvenida.Presentacion.Empleados
                 if (MessageBox.Show("¿Quieres dar de baja a este empleado?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     u.gestor().setData(sql);
-                    MessageBox.Show("Empleado dado de baja con exito");
+                    MessageBox.Show("Empleado dado de baja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     initTable("");
                 }
             }
             else
             {
-                MessageBox.Show("Error, selecciona un empleado");
+                MessageBox.Show("Error, selecciona un empleado", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvEmples.ClearSelection();
             }
         }

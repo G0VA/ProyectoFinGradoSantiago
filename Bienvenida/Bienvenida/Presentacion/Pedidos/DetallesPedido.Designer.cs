@@ -94,7 +94,9 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvPedidos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DetallesPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DetallesPedido";
             this.Shown += new System.EventHandler(this.DetallesPedido_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();

@@ -22,6 +22,7 @@ namespace Bienvenida
         public InicioApp()
         {
             InitializeComponent();
+            this.btnCerrarSesion.Enabled = false;
             this.button1.Visible = false;
             cerrarAll();
         }
@@ -30,7 +31,12 @@ namespace Bienvenida
         {
             Usuario u = new Usuario();
             String countText = u.gestor().getUnString("select count(*) from empleados");
-            int cont = Int16.Parse(countText);
+            int cont = 0;
+            if (!countText.Equals(""))
+            {
+                cont = Int16.Parse(countText);
+            }
+            cont++;
             int id = 1;
             while (cont > 0)
             {
@@ -73,9 +79,11 @@ namespace Bienvenida
                 Principal prin = new Principal(this.listaUsuarios, this);
                 this.Hide();
                 prin.Show();
+                this.btnCerrarSesion.Enabled = true;
                 this.button1.Visible = true;
             }else
             {
+                this.btnCerrarSesion.Enabled = false;
                 this.button1.Visible = false;
             }
         }
@@ -105,8 +113,10 @@ namespace Bienvenida
                 this.Hide();
                 prin.Show();
                 this.button1.Visible = true;
+                this.button1.Visible = true;
             }else
             {
+                this.btnCerrarSesion.Enabled = false;
                 this.button1.Visible = false;
             }
         }
@@ -138,7 +148,7 @@ namespace Bienvenida
                 emples.ShowDialog();
             }else
             {
-                MessageBox.Show("Error, Contraseña incorrecta");
+                MessageBox.Show("Error, Contraseña incorrecta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -105,12 +105,12 @@ namespace Bienvenida.Presentacion.Productos1
                 }
                 else
                 {
-                    MessageBox.Show("Ya existe esa categoria");
+                    MessageBox.Show("Ya existe esa categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }    
             }
             else
             {
-                MessageBox.Show("Error, revisa los datos");
+                MessageBox.Show("Error, revisa los datos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

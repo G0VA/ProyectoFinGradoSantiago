@@ -156,7 +156,7 @@ namespace Bienvenida.Presentacion.Productos
                 prod.getGestor().setData(update);
                 //pro.getGestor().setData(sql);
 
-                MessageBox.Show("Modificado con éxito");
+                MessageBox.Show("Modificado con éxito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Dispose();
                 this.pro.initTable("");
                 this.pro.Show();
@@ -164,7 +164,7 @@ namespace Bienvenida.Presentacion.Productos
             }
             else
             {
-                MessageBox.Show("Rellena todos los campos antes de añadir producto");
+                MessageBox.Show("Rellena todos los campos antes de añadir producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -223,7 +223,7 @@ namespace Bienvenida.Presentacion.Productos
                 }
                 else
                 {
-                    MessageBox.Show("Ya existe el categoria");
+                    MessageBox.Show("Ya existe el categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }

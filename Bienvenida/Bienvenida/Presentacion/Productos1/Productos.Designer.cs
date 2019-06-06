@@ -227,7 +227,9 @@
             this.Controls.Add(this.cbTipo1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.dgvProductos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Productos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Productos";
             this.Shown += new System.EventHandler(this.mostrar);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

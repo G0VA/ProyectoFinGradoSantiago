@@ -285,7 +285,9 @@
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.btnModificaPedido);
             this.Controls.Add(this.btnVolver);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModificaPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ModificaPedido";
             this.Shown += new System.EventHandler(this.ModificaPedido_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();

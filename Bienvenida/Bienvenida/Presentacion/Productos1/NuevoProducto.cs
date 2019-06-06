@@ -124,26 +124,27 @@ namespace Bienvenida.Presentacion.Productos
 
                     p.getGestor().setData(sql);
 
-                    MessageBox.Show("Insertado con éxito");
+                    MessageBox.Show("Insertado con éxito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     this.Dispose();
                     this.pro.initTable("");
                     this.pro.Show();
                 }else
                 {
-                    MessageBox.Show("Ya existe el producto");
+                    MessageBox.Show("Ya existe el producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }  
             }
             else
             {
-                MessageBox.Show("Rellena todos los campos antes de añadir producto");
+                MessageBox.Show("Rellena todos los campos antes de añadir producto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) &&
-                e.KeyChar != (char)Keys.Back)
+                e.KeyChar != (char)Keys.Back && 
+                txtStock.TextLength < 6)
             {
                 e.Handled = true;
             }
@@ -207,8 +208,8 @@ namespace Bienvenida.Presentacion.Productos
                 }
                 else
                 {
-                    MessageBox.Show("Ya existe el categoria");
-                    
+                    MessageBox.Show("Ya existe el categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }          
         }
