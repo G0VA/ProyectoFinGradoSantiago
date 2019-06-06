@@ -81,8 +81,11 @@ namespace Bienvenida.Presentacion.Productos
         {
             Boolean correcto = true;
 
-            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")) || txtNombre.Text.Replace("'", "").Length > 40)
             {
+                if (txtNombre.Text.Replace("'", "").Length > 40)
+                    MessageBox.Show("Campo nombre demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 correcto = false;
             }
 
@@ -96,13 +99,19 @@ namespace Bienvenida.Presentacion.Productos
                 correcto = false;
             }
 
-            if (String.IsNullOrEmpty(txtStock.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtStock.Text.Replace("'", "")) || txtStock.Text.Replace("'", "").Length > 7)
             {
+                if (txtStock.Text.Replace("'", "").Length > 7)
+                    MessageBox.Show("Campo stock demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 correcto = false;
+                return correcto;
             }
 
-            if (String.IsNullOrEmpty(txtPrecio.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtPrecio.Text.Replace("'", "")) || txtPrecio.Text.IndexOf(".") > 7 || txtPrecio.Text.Replace("'", "").Length > 7)
             {
+                if (txtPrecio.Text.IndexOf(".") > 7 || txtPrecio.Text.Replace("'", "").Length > 7)
+                    MessageBox.Show("Campo precio demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correcto = false;
 
             }
@@ -115,7 +124,7 @@ namespace Bienvenida.Presentacion.Productos
         {
             Boolean existe = false;
             Producto p = new Producto();
-            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from productos where upper(nombre_producto) = '" + nombre.ToUpper() + "'"));
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from productos where borrado = 0 and upper(nombre_producto) = '" + nombre.ToUpper() + "'"));
             if (count > 1)
                 existe = true;
 
@@ -220,12 +229,16 @@ namespace Bienvenida.Presentacion.Productos
                     prod.getGestor().setData("insert into productos_tipo1 (ID,TIPO) values (" + count + ",'" + categoria.ToUpper() + "')");
                     initTipo1("" + " order by id");
                     cbTipo2.SelectedIndex = -1;
+                    MessageBox.Show("Categoria insertada correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
                     MessageBox.Show("Ya existe el categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
+            }
+            else
+            {
+                MessageBox.Show("No puede estar vacio, no insertado", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

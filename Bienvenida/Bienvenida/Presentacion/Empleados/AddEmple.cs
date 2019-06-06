@@ -34,14 +34,19 @@ namespace Bienvenida.Presentacion.Empleados
         public Boolean check()
         {
             Boolean correcto = true;
-
-            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")))
+             
+            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")) || txtNombre.Text.Replace("'", "").Length > 40)
             {
+                if (txtNombre.Text.Replace("'", "").Length > 40)
+                    MessageBox.Show("Campo nombre demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 correcto = false;
             }
 
-            if (String.IsNullOrEmpty(txtApe.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtApe.Text.Replace("'", "")) || txtApe.Text.Replace("'", "").Length > 80)
             {
+                if (txtApe.Text.Replace("'", "").Length > 80)
+                    MessageBox.Show("Campo apellido demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correcto = false;
             }
 
@@ -59,8 +64,10 @@ namespace Bienvenida.Presentacion.Empleados
             }
 
 
-            if (String.IsNullOrEmpty(txtPass.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtPass.Text.Replace("'", "")) || txtPass.Text.Replace("'", "").Length > 40)
             {
+                if (txtPass.Text.Replace("'", "").Length > 40)
+                    MessageBox.Show("Campo contraseña demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correcto = false;
 
             }

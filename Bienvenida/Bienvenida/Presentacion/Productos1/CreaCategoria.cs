@@ -62,8 +62,10 @@ namespace Bienvenida.Presentacion.Productos1
                 correcto = false;
             }
 
-            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")))
+            if (String.IsNullOrEmpty(txtNombre.Text.Replace("'", "")) || txtNombre.Text.Replace("'", "").Length > 40)
             {
+                if (txtNombre.Text.Replace("'", "").Length > 7)
+                    MessageBox.Show("Campo nombre demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 correcto = false;
             }
 
@@ -93,6 +95,7 @@ namespace Bienvenida.Presentacion.Productos1
                 {
                     count++;
                     p.getGestor().setData("insert into productos_tipo2 (ID,TIPO,T1) values (" + count + ",'" + txtNombre.Text.Replace("'", "").ToUpper() + "',"+idTipo1+")");
+                    MessageBox.Show("Categoria insertada correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     this.Dispose();
                     if (mod != null)
                     {

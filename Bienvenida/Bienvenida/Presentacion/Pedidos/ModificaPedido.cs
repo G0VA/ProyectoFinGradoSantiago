@@ -236,6 +236,12 @@ namespace Bienvenida.Presentacion.Pedidos
             if (cbFPago.SelectedIndex == -1)
                 correcto = false;
 
+            if (txtCliente.Text.Replace("'", "").Length > 40)
+            {
+                MessageBox.Show("Campo cliente demasiado grande", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                correcto = false;
+            }
+
             return correcto;
 
         }

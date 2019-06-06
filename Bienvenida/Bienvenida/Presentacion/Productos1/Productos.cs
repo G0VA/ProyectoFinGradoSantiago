@@ -189,6 +189,7 @@ namespace Bienvenida.Presentacion.Productos
         {
             txtNombre.Text = "";
             cbTipo1.SelectedIndex = -1;
+            cbTipo2.SelectedIndex = -1;
             cbTipo2.Items.Clear();
             initTable("");
             //initTipo1("");
