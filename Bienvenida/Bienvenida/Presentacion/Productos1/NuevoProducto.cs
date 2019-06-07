@@ -56,6 +56,7 @@ namespace Bienvenida.Presentacion.Productos
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            this.pro.initTipo1("");
             this.pro.Show();
         }
 
@@ -137,6 +138,7 @@ namespace Bienvenida.Presentacion.Productos
 
                     this.Dispose();
                     this.pro.initTable("");
+                    this.pro.initTipo1("");
                     this.pro.Show();
                 }else
                 {

@@ -61,7 +61,29 @@ namespace Bienvenida.Presentacion.Empleados
         {
             dgvEmples.ClearSelection();
         }
+        private Boolean existeEmpleActivo()
+        {
+            Boolean existe = false;
+            Producto p = new Producto();
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from PEDIDOS p inner join Empleados e on e.ID_EMPLE = p.REF_EMPLE where p.PAGADO = 0 and e.DNI = '"+ dgvEmples.Rows[dgvEmples.CurrentRow.Index].Cells[0].Value.ToString() + "'"));
+            if (count > 0)
+                existe = true;
 
+            return existe;
+
+        }
+
+        private Boolean existeEmpleLog()
+        {
+            Boolean existe = false;
+            Producto p = new Producto();
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from Empleados where conectado = 1 and DNI = '" + dgvEmples.Rows[dgvEmples.CurrentRow.Index].Cells[0].Value.ToString() + "'"));
+            if (count > 0)
+                existe = true;
+
+            return existe;
+
+        }
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             String sql = "";
@@ -78,16 +100,27 @@ namespace Bienvenida.Presentacion.Empleados
             bool n = dgvEmples.CurrentRow.Selected;
             if (n)
             {
-                Usuario u = new Usuario();
-                String dni = dgvEmples.Rows[dgvEmples.CurrentRow.Index].Cells[0].Value.ToString();
-                String sql = "Update empleados set borrado=1 where dni='" + dni + "'";
-
-                if (MessageBox.Show("¿Quieres dar de baja a este empleado?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if(!existeEmpleActivo() && !existeEmpleLog())
                 {
-                    u.gestor().setData(sql);
-                    MessageBox.Show("Empleado dado de baja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    initTable("");
+                    Usuario u = new Usuario();
+                    String dni = dgvEmples.Rows[dgvEmples.CurrentRow.Index].Cells[0].Value.ToString();
+                    String sql = "Update empleados set borrado=1 where dni='" + dni + "'";
+
+                    if (MessageBox.Show("¿Quieres dar de baja a este empleado?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        u.gestor().setData(sql);
+                        MessageBox.Show("Empleado dado de baja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        initTable("");
+                    }
                 }
+                else
+                {
+                    if(!existeEmpleActivo())
+                        MessageBox.Show("Error, el empleado seleccionado esta actualmente con sesion iniciada", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("Error, el empleado seleccionado tiene pedidos activos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {

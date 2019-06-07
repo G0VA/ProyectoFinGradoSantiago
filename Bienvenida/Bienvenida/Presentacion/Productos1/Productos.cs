@@ -90,6 +90,8 @@ namespace Bienvenida.Presentacion.Productos
             Producto p = new Producto();
             p.getGestor().readInDB("TIPO", "PRODUCTOS_TIPO1", cond);
             DataTable tipo1 = p.getGestor().getTabla();
+            cbTipo2.SelectedIndex = -1;
+            cbTipo1.Items.Clear();
             cbTipo2.Items.Clear();
             foreach (DataRow row in tipo1.Rows)
             {
@@ -122,6 +124,18 @@ namespace Bienvenida.Presentacion.Productos
             this.prin.Show();
         }
 
+        private Boolean existeProductActivo()
+        {
+            Boolean existe = false;
+            Producto p = new Producto();
+            int count = Int16.Parse(p.getGestor().getUnString("select count(*) from PEDIDOS p inner join PEDIDOS_PRODUCTOS o on o.REF_PEDIDO = p.ID_PEDIDO inner join PRODUCTOS j on j.ID_PRODUCTO = o.REF_PRODUCTO where p.PAGADO = 0 and j.ID_PRODUCTO = "+ dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString()));
+            if (count > 0)
+                existe = true;
+
+            return existe;
+
+        }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             //bool n = dgvProductos.CurrentRow.Selected;
@@ -151,6 +165,7 @@ namespace Bienvenida.Presentacion.Productos
         {
             if (cbTipo1.SelectedIndex != -1)
             {
+                cbTipo2.SelectedIndex = -1;
                 cbTipo2.Items.Clear();
                 String cond = " Where t1 = (Select id from PRODUCTOS_TIPO1 where TIPO = '" + cbTipo1.SelectedItem.ToString() + "')";
                 initTipo2(cond);
@@ -202,16 +217,23 @@ namespace Bienvenida.Presentacion.Productos
             bool n = dgvProductos.SelectedRows.Count == 0 ? false : true;
             if (n)
             {
-                Producto p = new Producto();
-                String id = dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString();
-                String sql = "Update productos set borrado=1 where id_producto=" + id;
-
-                if (MessageBox.Show("¿Quieres eliminar a este producto?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (!existeProductActivo())
                 {
-                    p.getGestor().setData(sql);
-                    MessageBox.Show("Producto eliminado con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    initTable("");
+                    Producto p = new Producto();
+                    String id = dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells[0].Value.ToString();
+                    String sql = "Update productos set borrado=1 where id_producto=" + id;
+
+                    if (MessageBox.Show("¿Quieres eliminar a este producto?", "Eliminar Pedido", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        p.getGestor().setData(sql);
+                        MessageBox.Show("Producto eliminado con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        initTable("");
+                    }
+                }else
+                {
+                    MessageBox.Show("Error, el producto seleccionado se encuentra en pedidos activos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
             else
             {
